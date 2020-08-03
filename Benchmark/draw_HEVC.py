@@ -103,7 +103,7 @@ def drawhevc(hclass):
     plt.ylabel('PSNR')
     plt.title('HEVC Class ' + hclass + ' dataset')
     # plt.savefig(savepathpsnr + '.eps', format='eps', dpi=300, bbox_inches='tight')
-    plt.savefig(savepathpsnr + '.png')
+    plt.savefig(savepathpsnr + '.png', dpi=75)
     plt.clf()
 
     # ----------------------------------------MSSSIM-------------------------------------------------
@@ -200,7 +200,7 @@ def drawhevc(hclass):
     plt.ylabel('MS-SSIM')
     plt.title('HEVC Class ' + hclass + ' dataset')
     # plt.savefig(savepathmsssim + '.eps', format='eps', dpi=300, bbox_inches='tight')
-    plt.savefig(savepathmsssim + '.png')
+    plt.savefig(savepathmsssim + '.png', dpi=75)
     plt.clf()
 
 drawhevc('B')
