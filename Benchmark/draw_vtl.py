@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import os
 import imageio
 import cv2
+import numpy as np
 
 prefix = 'VTLresults'
 LineWidth = 2
@@ -33,7 +34,7 @@ plt.xlabel('Bpp')
 plt.ylabel('PSNR')
 plt.title('VTL dataset')
 # plt.savefig(savepathpsnr + '.eps', format='eps', dpi=300, bbox_inches='tight')
-plt.savefig(savepathpsnr + '.png', dpi=70)
+plt.savefig(savepathpsnr + '.png')
 plt.clf()
 
 # ----------------------------------------MSSSIM-------------------------------------------------
@@ -65,5 +66,13 @@ plt.xlabel('Bpp')
 plt.ylabel('MS-SSIM')
 plt.title('VTL dataset')
 # plt.savefig(savepathmsssim + '.eps', format='eps', dpi=300, bbox_inches='tight')
-plt.savefig(savepathmsssim + '.png', dpi=70)
+plt.savefig(savepathmsssim + '.png')
 plt.clf()
+
+
+savepath = prefix + '/' + 'VTL' + '.png'
+img1 = cv2.imread(savepathpsnr + '.png')
+img2 = cv2.imread(savepathmsssim + '.png')
+
+image = np.concatenate((img1, img2), axis=1)
+cv2.imwrite(savepath, image)

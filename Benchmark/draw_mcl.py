@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import os
 import imageio
 import cv2
+import numpy as np
 
 prefix = 'MCLresults'
 LineWidth = 2
@@ -44,7 +45,7 @@ plt.grid()
 plt.xlabel('Bpp')
 plt.ylabel('PSNR')
 plt.title('MCL-JCV dataset')
-plt.savefig(savepathpsnr, dpi=70)
+plt.savefig(savepathpsnr)
 # plt.savefig(savepathpsnreps, format='eps', dpi=300, bbox_inches='tight')
 plt.clf()
 
@@ -75,6 +76,14 @@ plt.grid()
 plt.xlabel('Bpp')
 plt.ylabel('MS-SSIM')
 plt.title('MCL-JCV dataset')
-plt.savefig(savepathmsssim, dpi=70)
+plt.savefig(savepathmsssim)
 # plt.savefig(savepathmsssimeps, format='eps', dpi=300, bbox_inches='tight')
 plt.clf()
+
+
+savepath = prefix + '/' + 'MCL' + '.png'
+img1 = cv2.imread(savepathpsnr)
+img2 = cv2.imread(savepathmsssim)
+
+image = np.concatenate((img1, img2), axis=1)
+cv2.imwrite(savepath, image)

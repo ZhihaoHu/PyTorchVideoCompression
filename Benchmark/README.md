@@ -9,19 +9,26 @@
 - <font color="#ff8c0f">M-LVC</font> : [M-LVC: Multiple Frames Prediction for Learned Video Compression](https://arxiv.org/abs/2004.10290)
 
 ## HEVC Class B dataset
-![](HEVCresults/HEVCClass_B_psnr.png)![](HEVCresults/HEVCClass_B_msssim.png)
+<!-- ![](HEVCresults/HEVCClass_B_psnr.png)![](HEVCresults/HEVCClass_B_msssim.png) -->
+![](HEVCresults/HEVCClass_B.png)
 ## HEVC Class C dataset
-![](HEVCresults/HEVCClass_C_psnr.png)![](HEVCresults/HEVCClass_C_msssim.png)
+<!-- ![](HEVCresults/HEVCClass_C_psnr.png)![](HEVCresults/HEVCClass_C_msssim.png) -->
+![](HEVCresults/HEVCClass_C.png)
 ## HEVC Class D dataset
-![](HEVCresults/HEVCClass_D_psnr.png)![](HEVCresults/HEVCClass_D_msssim.png)
+<!-- ![](HEVCresults/HEVCClass_D_psnr.png)![](HEVCresults/HEVCClass_D_msssim.png) -->
+![](HEVCresults/HEVCClass_D.png)
 ## HEVC Class B dataset
-![](HEVCresults/HEVCClass_E_psnr.png)![](HEVCresults/HEVCClass_E_msssim.png)
+<!-- ![](HEVCresults/HEVCClass_E_psnr.png)![](HEVCresults/HEVCClass_E_msssim.png) -->
+![](HEVCresults/HEVCClass_E.png)
 ## UVG dataset
-![](UVGresults/UVG_psnr.png)![](UVGresults/UVG_msssim.png)
+<!-- ![](UVGresults/UVG_psnr.png)![](UVGresults/UVG_msssim.png) -->
+![](UVGresults/UVG.png)
 ## MCL-JCV dataset
-![](MCLresults/MCL_psnr.png)![](MCLresults/MCL_msssim.png)
+<!-- ![](MCLresults/MCL_psnr.png)![](MCLresults/MCL_msssim.png) -->
+![](MCLresults/MCL.png)
 ## VTL dataset
-![](VTLresults/VTL_psnr.png)![](VTLresults/VTL_msssim.png)
+<!-- ![](VTLresults/VTL_psnr.png)![](VTLresults/VTL_msssim.png) -->
+![](VTLresults/VTL.png)
 
 
 ## Setting of H.264 and H.265

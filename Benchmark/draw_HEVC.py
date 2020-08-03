@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import os
 import imageio
 import cv2
+import numpy as np
 
 def drawhevc(hclass):
     prefix = 'HEVCresults'
@@ -103,7 +104,7 @@ def drawhevc(hclass):
     plt.ylabel('PSNR')
     plt.title('HEVC Class ' + hclass + ' dataset')
     # plt.savefig(savepathpsnr + '.eps', format='eps', dpi=300, bbox_inches='tight')
-    plt.savefig(savepathpsnr + '.png', dpi=70)
+    plt.savefig(savepathpsnr + '.png')
     plt.clf()
 
     # ----------------------------------------MSSSIM-------------------------------------------------
@@ -200,8 +201,15 @@ def drawhevc(hclass):
     plt.ylabel('MS-SSIM')
     plt.title('HEVC Class ' + hclass + ' dataset')
     # plt.savefig(savepathmsssim + '.eps', format='eps', dpi=300, bbox_inches='tight')
-    plt.savefig(savepathmsssim + '.png', dpi=70)
+    plt.savefig(savepathmsssim + '.png')
     plt.clf()
+
+    savepath = prefix + '/' + 'HEVCClass_' + hclass + '.png'
+    img1 = cv2.imread(savepathpsnr + '.png')
+    img2 = cv2.imread(savepathmsssim + '.png')
+
+    image = np.concatenate((img1, img2), axis=1)
+    cv2.imwrite(savepath, image)
 
 drawhevc('B')
 drawhevc('C')
