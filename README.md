@@ -16,11 +16,11 @@ PyTorch implementation and benchmark of Video Compression
 ### HEVC Class B dataset
 ![](Benchmark/HEVCresults/HEVCClass_E_psnr.png)![](Benchmark/HEVCresults/HEVCClass_E_msssim.png)
 ### UVG dataset
-![](Benchmark/UVGresults/UVG_psnr.png)![](Benchmark/UVGresults/UVG_psnr.png)
+![](Benchmark/UVGresults/UVG_psnr.png)![](Benchmark/UVGresults/UVG_msssim.png)
 ### MCL-JCV dataset
-![](Benchmark/MCLresults/MCL_psnr.png)![](Benchmark/MCLresults/MCL_psnr.png)
+![](Benchmark/MCLresults/MCL_psnr.png)![](Benchmark/MCLresults/MCL_msssim.png)
 ### VTL dataset
-![](Benchmark/VTLresults/VTL_psnr.png)![](Benchmark/VTLresults/VTL_psnr.png)
+![](Benchmark/VTLresults/VTL_psnr.png)![](Benchmark/VTLresults/VTL_msssim.png)
 
 
 # Contact

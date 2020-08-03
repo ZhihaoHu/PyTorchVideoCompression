@@ -17,11 +17,11 @@
 ## HEVC Class B dataset
 ![](HEVCresults/HEVCClass_E_psnr.png)![](HEVCresults/HEVCClass_E_msssim.png)
 ## UVG dataset
-![](UVGresults/UVG_psnr.png)![](UVGresults/UVG_psnr.png)
+![](UVGresults/UVG_psnr.png)![](UVGresults/UVG_msssim.png)
 ## MCL-JCV dataset
-![](MCLresults/MCL_psnr.png)![](MCLresults/MCL_psnr.png)
+![](MCLresults/MCL_psnr.png)![](MCLresults/MCL_msssim.png)
 ## VTL dataset
-![](VTLresults/VTL_psnr.png)![](VTLresults/VTL_psnr.png)
+![](VTLresults/VTL_psnr.png)![](VTLresults/VTL_msssim.png)
 
 
 ## Setting of H.264 and H.265
