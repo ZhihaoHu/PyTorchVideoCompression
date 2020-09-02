@@ -15,7 +15,7 @@ from torch.utils.data import DataLoader
 import sys
 import math
 import json
-from dataset import DataSet, HEVCDataSet, UVGDataSet, VTLDataSet, MCLDataSet
+from dataset import DataSet, UVGDataSet
 from tensorboardX import SummaryWriter
 from drawuvg import uvgdrawplt
 torch.backends.cudnn.enabled = True

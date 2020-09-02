@@ -51,17 +51,17 @@ class UVGDataSet(data.Dataset):
 
     def getbpp(self, ref_i_folder):
         Ibpp = None
-        if ref_i_folder == 'H265L20':
-            print('use H265L20')
+        if ref_i_folder == 'H265Q20':
+            print('use H265Q20')
             Ibpp = []# you need to fill bpps after generating crf=20
-        elif ref_i_folder == 'H265L23':
-            print('use H265L23')
+        elif ref_i_folder == 'H265Q23':
+            print('use H265Q23')
             Ibpp = []# you need to fill bpps after generating crf=23
-        elif ref_i_folder == 'H265L26':
-            print('use H265L26')
+        elif ref_i_folder == 'H265Q26':
+            print('use H265Q26')
             Ibpp = []# you need to fill bpps after generating crf=26
-        elif ref_i_folder == 'H265L29':
-            print('use H265L29')
+        elif ref_i_folder == 'H265Q29':
+            print('use H265Q29')
             Ibpp = []# you need to fill bpps after generating crf=29
         else:
             print('cannot find ref : ', ref_i_folder)
@@ -102,7 +102,7 @@ class DataSet(data.Dataset):
         
         self.featurenoise = torch.zeros([out_channel_M, self.im_height // 16, self.im_width // 16])
         self.znoise = torch.zeros([out_channel_N, self.im_height // 64, self.im_width // 64])
-        self.mvnois = torch.zeros([out_channel_mv, self.im_height // 16, self.im_width // 16])\
+        self.mvnois = torch.zeros([out_channel_mv, self.im_height // 16, self.im_width // 16])
         print("dataset find image: ", len(self.image_input_list))
 
     def get_vimeo(self, rootdir="data/vimeo_septuplet/sequences/", filefolderlist="data/vimeo_septuplet/test.txt"):

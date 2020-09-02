@@ -26,7 +26,7 @@ def uvgdrawplt(lbpp, lpsnr, lmsssim, global_step, la='new', testfull=False):
     print(prefix)
     if not os.path.exists(prefix):
         os.makedirs(prefix)
-    plt.legend(handles=[h264, h265, baseline, block, test], loc=4)
+    plt.legend(handles=[h264, h265, baseline, test], loc=4)
     plt.grid()
     plt.xlabel('Bpp')
     plt.ylabel('PSNR')
@@ -48,7 +48,7 @@ def uvgdrawplt(lbpp, lpsnr, lmsssim, global_step, la='new', testfull=False):
     h265, = plt.plot(bpp, msssim, "r--v", linewidth=LineWidth, label='H.265')
 
     savepathmsssim = prefix + '/' + 'UVG_msssim' + '.png'
-    plt.legend(handles=[h264, h265, baseline, block, test], loc=4)
+    plt.legend(handles=[h264, h265, baseline, test], loc=4)
     plt.grid()
     plt.xlabel('Bpp')
     plt.ylabel('MS-SSIM')
