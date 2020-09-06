@@ -1,6 +1,7 @@
 *.avi
 *.pyc
 *.swp
+*.model
 log/*
 data/output/*
 *.pkl

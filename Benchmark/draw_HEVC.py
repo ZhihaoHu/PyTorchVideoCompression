@@ -13,11 +13,15 @@ def drawhevc(hclass):
     LineWidth = 2
 
     if hclass == 'B':
+
         
-        bpp = [0.0661, 0.09362000000000001, 0.14695999999999998, 0.2232]
-        psnr = [32.721524294756705, 33.61284158051482, 34.75174138791608, 35.718610694312616]
-        msssim = [0.959144, 0.964186, 0.97111, 0.9765840000000001]
-        MLVC, = plt.plot(bpp, psnr, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
+        bpp, psnr = [0.271843, 0.146412, 0.090925, 0.056782], [35.104963, 34.104735, 33.066283, 31.911116]
+        RaFC, = plt.plot(bpp, psnr, "c-o", color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')
+        
+        # bpp = [0.0661, 0.09362000000000001, 0.14695999999999998, 0.2232]
+        # psnr = [32.721524294756705, 33.61284158051482, 34.75174138791608, 35.718610694312616]
+        # msssim = [0.959144, 0.964186, 0.97111, 0.9765840000000001]
+        # MLVC, = plt.plot(bpp, psnr, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC') #  some problem : this paper use resize the test sequence, which loses information and leads to higher results.
 
         bpp = [0.07658514, 0.11616374, 0.16643274, 0.2939271]
         psnr = [31.82619106, 33.0220837, 34.10751308, 35.10115456]
@@ -33,11 +37,13 @@ def drawhevc(hclass):
         msssim = [0.975606114, 0.966591679, 0.956803834, 0.942605916]
         h265, = plt.plot(bpp, psnr, "r--v", linewidth=LineWidth, label='H.265')
     elif hclass == 'C':
+        bpp, psnr = [0.345057, 0.244922, 0.16963, 0.107338], [32.58818, 31.563223, 30.362042, 28.849785]
+        RaFC, = plt.plot(bpp, psnr, "c-o", color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')
         
-        bpp = [0.12157499999999999, 0.17965, 0.271025, 0.38745]
-        psnr = [28.63609903605147, 29.944387388321196, 31.54062511303266, 33.03500011196936]
-        msssim = [0.9578025, 0.9686675, 0.9776324999999999, 0.98348]
-        MLVC, = plt.plot(bpp, psnr, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
+        # bpp = [0.12157499999999999, 0.17965, 0.271025, 0.38745]
+        # psnr = [28.63609903605147, 29.944387388321196, 31.54062511303266, 33.03500011196936]
+        # msssim = [0.9578025, 0.9686675, 0.9776324999999999, 0.98348]
+        # MLVC, = plt.plot(bpp, psnr, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
 
         bpp = [0.133924025, 0.19340295, 0.272746925, 0.4122508326]
         psnr = [28.767909, 29.95094243, 31.25051302, 32.51022528]
@@ -53,11 +59,14 @@ def drawhevc(hclass):
         msssim = [0.983231578, 0.974819694, 0.962047889, 0.941757279]
         h265, = plt.plot(bpp, psnr, "r--v", linewidth=LineWidth, label='H.265')
     elif hclass == 'D':
+        bpp, psnr = [0.37856, 0.274477, 0.192981, 0.121238], [32.642264, 31.520746, 30.215077, 28.655284]
+        RaFC, = plt.plot(bpp, psnr, "c-o", color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')
+
         
-        bpp = [0.11227499999999999, 0.17395000000000002, 0.264575, 0.38207500000000005]
-        psnr = [28.82520179437781, 30.23478970812226, 31.91116994008828, 33.53631860458036]
-        msssim = [0.96777, 0.9763375, 0.9830949999999999, 0.98793]
-        MLVC, = plt.plot(bpp, psnr, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
+        # bpp = [0.11227499999999999, 0.17395000000000002, 0.264575, 0.38207500000000005]
+        # psnr = [28.82520179437781, 30.23478970812226, 31.91116994008828, 33.53631860458036]
+        # msssim = [0.96777, 0.9763375, 0.9830949999999999, 0.98793]
+        # MLVC, = plt.plot(bpp, psnr, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
         
         bpp = [0.141631075, 0.206291275, 0.2892303, 0.4370301311]
         psnr = [28.41229473, 29.72853673, 31.1727661, 32.53451213]
@@ -73,10 +82,13 @@ def drawhevc(hclass):
         msssim = [0.987591187, 0.98046689, 0.969045592, 0.951302461]
         h265, = plt.plot(bpp, psnr, "r--v", linewidth=LineWidth, label='H.265')
     elif hclass == 'E':
-        bpp = [0.02223333333333333, 0.0281, 0.04416666666666667, 0.06459999999999999]
-        psnr = [36.119993400198794, 36.895272069830746, 37.95133358562974, 38.59336757723919]
-        msssim = [0.97991, 0.98177, 0.9831466666666667, 0.98547]
-        MLVC, = plt.plot(bpp, psnr, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
+        bpp, psnr = [0.102672, 0.059125, 0.041676, 0.028598], [39.933601, 38.773299, 37.673584, 36.296838]
+        RaFC, = plt.plot(bpp, psnr, "c-o", color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')
+
+        # bpp = [0.02223333333333333, 0.0281, 0.04416666666666667, 0.06459999999999999]
+        # psnr = [36.119993400198794, 36.895272069830746, 37.95133358562974, 38.59336757723919]
+        # msssim = [0.97991, 0.98177, 0.9831466666666667, 0.98547]
+        # MLVC, = plt.plot(bpp, psnr, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
 
         bpp = [0.03684806667, 0.04987243333, 0.07102866667, 0.1215183]
         psnr = [36.020002, 37.53390843, 38.70012267, 39.80463083]
@@ -98,7 +110,7 @@ def drawhevc(hclass):
     print(prefix)
     if not os.path.exists(prefix):
         os.makedirs(prefix)
-    plt.legend(handles=[h264, h265, DVC, MLVC], loc=4)
+    plt.legend(handles=[h264, h265, DVC, RaFC], loc=4)
     plt.grid()
     plt.xlabel('Bpp')
     plt.ylabel('PSNR')
@@ -110,10 +122,13 @@ def drawhevc(hclass):
     # ----------------------------------------MSSSIM-------------------------------------------------
     if hclass == 'B':
         
-        bpp = [0.0661, 0.09362000000000001, 0.14695999999999998, 0.2232]
-        psnr = [32.721524294756705, 33.61284158051482, 34.75174138791608, 35.718610694312616]
-        msssim = [0.959144, 0.964186, 0.97111, 0.9765840000000001]
-        MLVC, = plt.plot(bpp, msssim, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
+        bpp, msssim = [0.286055, 0.171946, 0.104357, 0.062172], [0.978676, 0.9724, 0.96476, 0.953966]
+        RaFC, = plt.plot(bpp, msssim, "c-o", color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')
+
+        # bpp = [0.0661, 0.09362000000000001, 0.14695999999999998, 0.2232]
+        # psnr = [32.721524294756705, 33.61284158051482, 34.75174138791608, 35.718610694312616]
+        # msssim = [0.959144, 0.964186, 0.97111, 0.9765840000000001]
+        # MLVC, = plt.plot(bpp, msssim, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
 
         msssim = [0.94666318, 0.95921518, 0.96812108, 0.97383252]
         bpp = [0.07658514, 0.11616374, 0.16643274, 0.2939271]
@@ -130,10 +145,14 @@ def drawhevc(hclass):
         h265, = plt.plot(bpp, msssim, "r--v", linewidth=LineWidth, label='H.265')
 
     elif hclass == 'C':
-        bpp = [0.12157499999999999, 0.17965, 0.271025, 0.38745]
-        psnr = [28.63609903605147, 29.944387388321196, 31.54062511303266, 33.03500011196936]
-        msssim = [0.9578025, 0.9686675, 0.9776324999999999, 0.98348]
-        MLVC, = plt.plot(bpp, msssim, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
+
+        bpp, psnr = [0.358622, 0.243691, 0.163198, 0.094394], [0.984432, 0.978034, 0.968136, 0.950041]
+        RaFC, = plt.plot(bpp, psnr, "c-o", color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')
+
+        # bpp = [0.12157499999999999, 0.17965, 0.271025, 0.38745]
+        # psnr = [28.63609903605147, 29.944387388321196, 31.54062511303266, 33.03500011196936]
+        # msssim = [0.9578025, 0.9686675, 0.9776324999999999, 0.98348]
+        # MLVC, = plt.plot(bpp, msssim, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
         
 
         bpp = [0.133924025, 0.19340295, 0.272746925, 0.4122508326]
@@ -151,10 +170,13 @@ def drawhevc(hclass):
         h265, = plt.plot(bpp, msssim, "r--v", linewidth=LineWidth, label='H.265')
     elif hclass == 'D':
         
-        bpp = [0.11227499999999999, 0.17395000000000002, 0.264575, 0.38207500000000005]
-        psnr = [28.82520179437781, 30.23478970812226, 31.91116994008828, 33.53631860458036]
-        msssim = [0.96777, 0.9763375, 0.9830949999999999, 0.98793]
-        MLVC, = plt.plot(bpp, msssim, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
+        bpp, psnr = [0.365465, 0.255783, 0.176039, 0.102085], [0.987527, 0.981579, 0.972727, 0.958684]
+        RaFC, = plt.plot(bpp, psnr, "c-o", color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')
+        
+        # bpp = [0.11227499999999999, 0.17395000000000002, 0.264575, 0.38207500000000005]
+        # psnr = [28.82520179437781, 30.23478970812226, 31.91116994008828, 33.53631860458036]
+        # msssim = [0.96777, 0.9763375, 0.9830949999999999, 0.98793]
+        # MLVC, = plt.plot(bpp, msssim, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
 
         bpp = [0.141631075, 0.206291275, 0.2892303, 0.4370301311]
         msssim = [0.95808245, 0.971744025, 0.981360625, 0.9863982]
@@ -171,10 +193,13 @@ def drawhevc(hclass):
         h265, = plt.plot(bpp, msssim, "r--v", linewidth=LineWidth, label='H.265')
     elif hclass == 'E':
         
-        bpp = [0.02223333333333333, 0.0281, 0.04416666666666667, 0.06459999999999999]
-        psnr = [36.119993400198794, 36.895272069830746, 37.95133358562974, 38.59336757723919]
-        msssim = [0.97991, 0.98177, 0.9831466666666667, 0.98547]
-        MLVC, = plt.plot(bpp, msssim, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
+        bpp, psnr = [0.138196, 0.078092, 0.04724, 0.029643], [0.990446, 0.988069, 0.985217, 0.980766]
+        RaFC, = plt.plot(bpp, psnr, "c-o", color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')
+        
+        # bpp = [0.02223333333333333, 0.0281, 0.04416666666666667, 0.06459999999999999]
+        # psnr = [36.119993400198794, 36.895272069830746, 37.95133358562974, 38.59336757723919]
+        # msssim = [0.97991, 0.98177, 0.9831466666666667, 0.98547]
+        # MLVC, = plt.plot(bpp, msssim, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
 
         bpp = [0.03684806667, 0.04987243333, 0.07102866667, 0.1215183]
         msssim = [0.9768797, 0.9829584333, 0.9865011667, 0.9887121667]
@@ -195,7 +220,7 @@ def drawhevc(hclass):
 
         
     savepathmsssim = prefix + '/' + 'HEVCClass_' + hclass + '_msssim'# + '.eps'
-    plt.legend(handles=[h264, h265, DVC, MLVC], loc=4)
+    plt.legend(handles=[h264, h265, DVC, RaFC], loc=4)
     plt.grid()
     plt.xlabel('Bpp')
     plt.ylabel('MS-SSIM')
