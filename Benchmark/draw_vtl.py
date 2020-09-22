@@ -15,6 +15,9 @@ matplotlib.rc('font', **font)
 bpp, psnr = [0.296787, 0.19001, 0.126534, 0.080851], [34.303688, 33.036154, 31.737594, 30.490966]
 rafc, = plt.plot(bpp, psnr, 'c-*', color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')
 
+bpp, psnr = [0.3059625, 0.199, 0.136516, 0.093883], [34.5241105,  33.20, 31.7834635, 30.4204885]
+LU, = plt.plot(bpp, psnr, "c-o", color="royalblue", linewidth=LineWidth, label='LU_ECCV20')
+
 bpp = [0.149002168, 0.194118677, 0.269459397, 0.484332918]#, 0.956521083]
 psnr = [31.67178903, 32.56079993, 33.57877741, 35.89857494]#, 38.44629636]
 iccv, = plt.plot(bpp, psnr, "c-*", linewidth=LineWidth, label='AD_ICCV19')
@@ -32,7 +35,7 @@ savepathpsnr = prefix + '/VTL_psnr'# + '.eps'
 print(prefix)
 if not os.path.exists(prefix):
     os.makedirs(prefix)
-plt.legend(handles=[h264, h265, DVC, iccv, rafc], loc=4)
+plt.legend(handles=[h264, h265, DVC, iccv, LU, rafc], loc=4)
 plt.grid()
 plt.xlabel('Bpp')
 plt.ylabel('PSNR')
@@ -51,6 +54,9 @@ plt.clf()
 bpp, msssim = [0.291837, 0.189759, 0.121654, 0.070671], [0.984102, 0.978341, 0.97124, 0.959966]
 rafc, = plt.plot(bpp, msssim, 'c-*', color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')
 
+bpp, psnr = [0.3059625, 0.199, 0.136516, 0.093883], [0.9838005, 0.9793955, 0.9732655, 0.964076]
+LU, = plt.plot(bpp, psnr, "c-o", color="royalblue", linewidth=LineWidth, label='LU_ECCV20')
+
 bpp = [0.149002168, 0.194118677, 0.269459397, 0.484332918]#, 0.956521083]
 psnr = [0.971382803, 0.975893586, 0.980153643, 0.988934007]#, 0.994301121]
 iccv, = plt.plot(bpp, psnr, "c-*", linewidth=LineWidth, label='AD_ICCV19')
@@ -68,7 +74,7 @@ h265, = plt.plot(bpp, msssim, "r--v", linewidth=LineWidth, label='H.265')
 
 
 savepathmsssim = prefix + '/' + 'VTL_msssim'# + '.eps'
-plt.legend(handles=[h264, h265, DVC, iccv, rafc], loc=4)
+plt.legend(handles=[h264, h265, DVC, iccv, LU, rafc], loc=4)
 plt.grid()
 plt.xlabel('Bpp')
 plt.ylabel('MS-SSIM')

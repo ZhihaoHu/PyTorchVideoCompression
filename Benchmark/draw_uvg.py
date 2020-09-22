@@ -22,6 +22,9 @@ LineWidth = 2
 bpp, psnr = [0.040222, 0.059522, 0.090525, 0.155768], [34.36477, 35.594595, 36.651909, 37.74166]
 rafc, = plt.plot(bpp, psnr, 'c-*', color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')
 
+bpp, psnr = [0.055, 0.07727, 0.114, 0.189], [34.655, 35.941, 37.066, 38.061]
+LU, = plt.plot(bpp, psnr, "c-o", color="royalblue", linewidth=LineWidth, label='LU_ECCV20')
+
 bpp, psnr =  [0.047607, 0.067984, 0.114375, 0.222292], [34.412507, 35.861409, 36.950722, 38.393440]
 EA, = plt.plot(bpp, psnr, "g-o", color="orange", linewidth=LineWidth, label='EA_CVPR20')
 
@@ -48,7 +51,7 @@ savepathpsnr = prefix + '/UVG_psnr'
 print(prefix)
 if not os.path.exists(prefix):
     os.makedirs(prefix)
-plt.legend(handles=[h264, h265, DVC, eccv, iccv, EA, rafc], loc=4)
+plt.legend(handles=[h264, h265, DVC, eccv, iccv, EA, LU, rafc], loc=4)
 plt.grid()
 plt.xlabel('Bpp')
 plt.ylabel('PSNR')
@@ -67,6 +70,9 @@ plt.clf()
 
 bpp, psnr = [0.218918, 0.130343, 0.077172, 0.04779], [0.978714, 0.972417, 0.965527, 0.956974]
 rafc, = plt.plot(bpp, psnr, 'c-*', color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')
+    
+bpp, psnr = [0.258854285714286,  0.16422, 0.10424, 0.072], [0.979627142857143, 0.97517, 0.969065714285714, 0.96103]
+LU, = plt.plot(bpp, psnr, "c-o", color="royalblue", linewidth=LineWidth, label='LU_ECCV20')
 
 bpp, psnr =  [0.060844, 0.085622, 0.128203, 0.243156, 0.345827], [0.961259, 0.968878, 0.974102, 0.982171, 0.985049]
 EA, = plt.plot(bpp, psnr, "g-o", color="orange", linewidth=LineWidth, label='EA_CVPR20')
@@ -94,7 +100,7 @@ h265, = plt.plot(bpp, msssim, "r--v", linewidth=LineWidth, label='H.265')
 
 
 savepathmsssim = prefix + '/' + 'UVG_msssim'# + '.eps'
-plt.legend(handles=[h264, h265, DVC, eccv, ha_iccv, iccv, EA, rafc], loc=4)
+plt.legend(handles=[h264, h265, DVC, eccv, ha_iccv, iccv, EA, LU, rafc], loc=4)
 plt.grid()
 plt.xlabel('Bpp')
 plt.ylabel('MS-SSIM')
