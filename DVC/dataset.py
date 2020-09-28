@@ -39,7 +39,7 @@ class UVGDataSet(data.Dataset):
             else:
                 framerange = 1
             for i in range(framerange):
-                refpath = os.path.join(root, seq, refdir, 'im'+str(i * 12 + 1).zfill(3)+'.png')
+                refpath = os.path.join(root, seq, refdir, 'im'+str(i * 12 + 1).zfill(4)+'.png')
                 inputpath = []
                 for j in range(12):
                     inputpath.append(os.path.join(root, seq, 'im' + str(i * 12 + j + 1).zfill(3)+'.png'))
@@ -51,17 +51,17 @@ class UVGDataSet(data.Dataset):
 
     def getbpp(self, ref_i_folder):
         Ibpp = None
-        if ref_i_folder == 'H265Q20':
-            print('use H265Q20')
+        if ref_i_folder == 'H265L20':
+            print('use H265L20')
             Ibpp = []# you need to fill bpps after generating crf=20
-        elif ref_i_folder == 'H265Q23':
-            print('use H265Q23')
+        elif ref_i_folder == 'H265L23':
+            print('use H265L23')
             Ibpp = []# you need to fill bpps after generating crf=23
-        elif ref_i_folder == 'H265Q26':
-            print('use H265Q26')
+        elif ref_i_folder == 'H265L26':
+            print('use H265L26')
             Ibpp = []# you need to fill bpps after generating crf=26
-        elif ref_i_folder == 'H265Q29':
-            print('use H265Q29')
+        elif ref_i_folder == 'H265L29':
+            print('use H265L29')
             Ibpp = []# you need to fill bpps after generating crf=29
         else:
             print('cannot find ref : ', ref_i_folder)
