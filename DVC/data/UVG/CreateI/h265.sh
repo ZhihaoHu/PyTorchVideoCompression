@@ -19,7 +19,7 @@ for input in ../videos_crop/*.yuv; do
 
 	mkdir -p out/h265/
 
-	FFREPORT=file=ffreport.log:level=56 ffmpeg -pix_fmt yuv420p -s $2x$3 -i $input -c:v libx265 -tune zerolatency -x265-params "crf=$1:keyint=10:verbose=1" out/h265/out.mkv
+	FFREPORT=file=ffreport.log:level=56 ffmpeg -pix_fmt yuv420p -s $2x$3 -i $input -c:v libx265 -tune zerolatency -x265-params "crf=$1:keyint=12:verbose=1" out/h265/out.mkv
 
 	ffmpeg -i out/h265/out.mkv -f image2 out/h265/img%06d.png
 
