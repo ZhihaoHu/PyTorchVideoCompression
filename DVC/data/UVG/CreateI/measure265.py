@@ -147,7 +147,7 @@ def main():
     import time
     for i in range(len(size_line)):
 #
-        if (i) % 10 == 0:
+        if (i) % 12 == 0:
         #if True:
             source = prefix + 'source/img' + "{0:0=6d}".format(i+1) + '.png'
             h265 = prefix + 'h265/img' + "{0:0=6d}".format(i+1) + '.png'
