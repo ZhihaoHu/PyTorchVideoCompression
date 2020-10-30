@@ -51,7 +51,7 @@ If you want to use tensorboard:
     sh tf.sh xxxx
 
 ## Testing
-Our pretrained model with λ=2048 is provided: [dvc_pretrain2048.model](https://drive.google.com/file/d/1CBXrTd6T0MnoAkmYeE9COPJDBGEaAzoe/view?usp=sharing). You can put it to `snapshot/` and run `test.sh`:
+Our pretrained model with λ=2048,1024,512,256 is provided on [Google Drive](https://drive.google.com/drive/folders/1M54MPrAzaA0QVySnzUu9HZWx1bfIrTZ6?usp=sharing). You can put it to `snapshot/` and run `test.sh`:
 
     sh test.sh
 
