@@ -28,6 +28,9 @@ LU, = plt.plot(bpp, psnr, "c-o", color="royalblue", linewidth=LineWidth, label='
 bpp, psnr =  [0.047607, 0.067984, 0.114375, 0.222292], [34.412507, 35.861409, 36.950722, 38.393440]
 EA, = plt.plot(bpp, psnr, "g-o", color="orange", linewidth=LineWidth, label='EA_CVPR20')
 
+bpp, msssim = [0.0524, 0.0781, 0.1278, 0.2303], [34.5390, 35.8618, 37.1899, 38.4590]
+RY, = plt.plot(bpp, msssim, "c-o", color="darkred", linewidth=LineWidth, label='RY_CVPR20')
+
 bpp = [0.12377, 0.16239, 0.1983, 0.229, 0.2699, 0.3113]
 psnr = [36.0736, 36.663, 36.9157, 37.1818, 37.5149, 37.6513]
 eccv, = plt.plot(bpp, psnr, "b-*", linewidth=LineWidth, label='CW_ECCV18')
@@ -76,6 +79,9 @@ LU, = plt.plot(bpp, psnr, "c-o", color="royalblue", linewidth=LineWidth, label='
 
 bpp, psnr =  [0.060844, 0.085622, 0.128203, 0.243156, 0.345827], [0.961259, 0.968878, 0.974102, 0.982171, 0.985049]
 EA, = plt.plot(bpp, psnr, "g-o", color="orange", linewidth=LineWidth, label='EA_CVPR20')
+
+bpp, msssim = [0.0764, 0.1133, 0.2125, 0.3839], [0.9640, 0.9693, 0.9779, 0.9832]
+RY, = plt.plot(bpp, msssim, "c-o", color="darkred", linewidth=LineWidth, label='RY_CVPR20')
 
 bpp = [0.12377, 0.16239, 0.1983, 0.229, 0.2699, 0.3113]
 msssim = [0.96126, 0.96591, 0.96708, 0.96867, 0.97117, 0.97186]

@@ -7,6 +7,7 @@
 - <font color="#00bfbf">AD_ICCV19</font> : [Neural Inter-Frame Compression for Video Coding](https://openaccess.thecvf.com/content_ICCV_2019/papers/Djelouah_Neural_Inter-Frame_Compression_for_Video_Coding_ICCV_2019_paper.pdf)
 - <font color="#00FF00">AH_ICCV19</font> : [Video CompressionWith Rate-Distortion Autoencoders](https://arxiv.org/abs/1908.05717v2)
 - <font color="#008000">EA_CVPR20</font> : [Scale-space Flow for End-to-end Optimized Video Compression](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9157366)
+- <font color="#8B0000">RY_CVPR20</font> : [Learning for Video Compression with Recurrent Auto-Encoder and Recurrent Probability Model](https://arxiv.org/pdf/2006.13560.pdf)
 - <font color="#8A2BE2">HU_ECCV20</font> : [Improving Deep Video Compression by Resolution-adaptive Flow Coding](http://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123470188.pdf)
 - <font color="#4169E1">LU_ECCV20</font> : [Content Adaptive and Error Propagation Aware Deep Video Compression](https://arxiv.org/pdf/2003.11282.pdf)
 - <font color="#ff8c0f">M-LVC</font> : [M-LVC: Multiple Frames Prediction for Learned Video Compression](https://arxiv.org/abs/2004.10290) (questionable)
@@ -21,7 +22,7 @@
 ## HEVC Class D dataset
 <!-- ![](HEVCresults/HEVCClass_D_psnr.png)![](HEVCresults/HEVCClass_D_msssim.png) -->
 ![](HEVCresults/HEVCClass_D.png)
-## HEVC Class B dataset
+## HEVC Class E dataset
 <!-- ![](HEVCresults/HEVCClass_E_psnr.png)![](HEVCresults/HEVCClass_E_msssim.png) -->
 ![](HEVCresults/HEVCClass_E.png)
 ## UVG dataset
