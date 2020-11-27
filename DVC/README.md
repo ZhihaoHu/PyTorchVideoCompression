@@ -18,6 +18,8 @@ DVC: An End-to-end Deep Video Compression Framework, Guo Lu, Wanli Ouyang, Dong 
 
 2. Unzip the dataset into `./data/`.
 
+3. Remember to put the file `test.txt` in `./data/vimeo_septuplet/` to the root of your vimeo dataset if you edit the path of vimeo.
+
 ### Test data
 
 This method only provide P-frame compression, so we first need to generate I frames by H.265. We take UVG dataset as an example.
