@@ -13,6 +13,9 @@
 - <font color="#ff8c0f">M-LVC</font> : [M-LVC: Multiple Frames Prediction for Learned Video Compression](https://arxiv.org/abs/2004.10290) (questionable)
    
 
+## HEVC Class A dataset
+<!-- ![](HEVCresults/HEVCClass_A_psnr.png)![](HEVCresults/HEVCClass_A_msssim.png) -->
+![](HEVCresults/HEVCClass_A.png)
 ## HEVC Class B dataset
 <!-- ![](HEVCresults/HEVCClass_B_psnr.png)![](HEVCresults/HEVCClass_B_msssim.png) -->
 ![](HEVCresults/HEVCClass_B.png)
