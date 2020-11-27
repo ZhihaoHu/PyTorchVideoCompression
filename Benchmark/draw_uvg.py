@@ -43,6 +43,9 @@ iccv, = plt.plot(bpp, psnr, "c-*", linewidth=LineWidth, label='AD_ICCV19')
 bpp, psnr, msssim = [0.185334726, 0.108594607, 0.076628071, 0.06013501], [37.69306179, 36.68785979, 35.52100014, 34.54747739], [0.971436012, 0.96574275, 0.957191524, 0.949676821]
 DVC, = plt.plot(bpp, psnr, "y-o", linewidth=LineWidth, label='DVC')
 
+bpp, psnr, msssim = [0.1580652024, 0.09510494048, 0.06334845238, 0.05001147619], [37.83633036, 36.77129217, 35.7142323, 35.03949596], [0.971793119, 0.9658603452, 0.9588654881, 0.9534102738]
+DVCp, = plt.plot(bpp, psnr, "y-o", color="peru", linewidth=LineWidth, label='DVC++')
+
 # Ours default
 bpp, psnr, msssim = [0.360398059, 0.148765645, 0.076027148, 0.044918456], [38.17135327, 36.64284159, 35.23609537, 33.81775541], [0.978673172, 0.967889817, 0.95755343, 0.945528742]
 h264, = plt.plot(bpp, psnr, "m--s", linewidth=LineWidth, label='H.264')
@@ -54,7 +57,7 @@ savepathpsnr = prefix + '/UVG_psnr'
 print(prefix)
 if not os.path.exists(prefix):
     os.makedirs(prefix)
-plt.legend(handles=[h264, h265, DVC, eccv, iccv, EA, LU, rafc], loc=4)
+plt.legend(handles=[h264, h265, DVC, DVCp, eccv, iccv, EA, LU, rafc], loc=4)
 plt.grid()
 plt.xlabel('Bpp')
 plt.ylabel('PSNR')
@@ -94,6 +97,8 @@ iccv, = plt.plot(bpp, msssim, "c-*", linewidth=LineWidth, label='AD_ICCV19')
 bpp, psnr, msssim = [0.185334726, 0.108594607, 0.076628071, 0.06013501], [37.69306179, 36.68785979, 35.52100014, 34.54747739], [0.971436012, 0.96574275, 0.957191524, 0.949676821]
 DVC, = plt.plot(bpp, msssim, "y-o", linewidth=LineWidth, label='DVC')
 
+bpp, psnr, msssim = [0.1580652024, 0.09510494048, 0.06334845238, 0.05001147619], [37.83633036, 36.77129217, 35.7142323, 35.03949596], [0.971793119, 0.9658603452, 0.9588654881, 0.9534102738]
+DVCp, = plt.plot(bpp, msssim, "y-o", color="peru", linewidth=LineWidth, label='DVC++')
 
 bpp, msssim = [0.25601, 0.18540, 0.11757, 0.06162, 0.04352, 0.03561], [0.97627, 0.97311, 0.96770, 0.95592, 0.94839, 0.94459]
 ha_iccv, = plt.plot(bpp, msssim, "g-o", color="lime", linewidth=LineWidth, label='AH_ICCV19')
@@ -106,7 +111,7 @@ h265, = plt.plot(bpp, msssim, "r--v", linewidth=LineWidth, label='H.265')
 
 
 savepathmsssim = prefix + '/' + 'UVG_msssim'# + '.eps'
-plt.legend(handles=[h264, h265, DVC, eccv, ha_iccv, iccv, EA, LU, rafc], loc=4)
+plt.legend(handles=[h264, h265, DVC, DVCp, eccv, ha_iccv, iccv, EA, LU, rafc], loc=4)
 plt.grid()
 plt.xlabel('Bpp')
 plt.ylabel('MS-SSIM')

@@ -33,6 +33,10 @@ def drawhevc(hclass):
         psnr = [31.82619106, 33.0220837, 34.10751308, 35.10115456]
         DVC, = plt.plot(bpp, psnr, "y-o", linewidth=LineWidth, label='DVC')
 
+        bpp = [0.2824179, 0.15401706, 0.09166346, 0.06412788]
+        psnr = [35.32781542, 34.2566437, 33.20279178, 32.05932868]
+        DVCp, = plt.plot(bpp, psnr, "y-o", color="peru", linewidth=LineWidth, label='DVC++')
+
         bpp = [0.569167464, 0.219282161, 0.110183846, 0.065360897]
         psnr = [35.79301018, 34.03927013, 32.59008599, 31.1074001]
         msssim = [0.977265628, 0.967603596, 0.957326897, 0.94278379]
@@ -60,6 +64,10 @@ def drawhevc(hclass):
         bpp = [0.133924025, 0.19340295, 0.272746925, 0.4122508326]
         psnr = [28.767909, 29.95094243, 31.25051302, 32.51022528]
         DVC, = plt.plot(bpp, psnr, "y-o", linewidth=LineWidth, label='DVC')
+
+        bpp = [0.4111753326,  0.2770532, 0.185561475, 0.12688355]
+        psnr = [33.89443968, 32.16821025, 30.68711723, 29.37904568]
+        DVCp, = plt.plot(bpp, psnr, "y-o", color="peru", linewidth=LineWidth, label='DVC++')
 
         bpp = [0.576088116, 0.328202857, 0.193107239, 0.116934184]
         psnr = [34.63515097, 32.32511581, 30.15303183, 28.10807277]
@@ -90,6 +98,10 @@ def drawhevc(hclass):
         psnr = [28.41229473, 29.72853673, 31.1727661, 32.53451213]
         DVC, = plt.plot(bpp, psnr, "y-o", linewidth=LineWidth, label='DVC')
 
+        bpp = [0.4087568561,0.281171025, 0.199286125,0.13588435]
+        psnr = [33.87303353,31.87365235, 30.47633143,29.02572843]
+        DVCp, = plt.plot(bpp, psnr, "y-o", color="peru", linewidth=LineWidth, label='DVC++')
+
         bpp = [0.62866645, 0.369079861, 0.216769748, 0.130388726]
         psnr = [34.8324324, 32.26764653, 29.94494703, 27.82689033]
         msssim = [0.987974466, 0.980878777, 0.969883378, 0.952591233]
@@ -115,6 +127,10 @@ def drawhevc(hclass):
         psnr = [36.020002, 37.53390843, 38.70012267, 39.80463083]
         DVC, = plt.plot(bpp, psnr, "y-o", linewidth=LineWidth, label='DVC')
 
+        bpp = [0.1071702, 0.06180936667, 0.04365763333, 0.03117206667]
+        psnr = [39.96223793, 38.78827227, 37.68675003, 36.3244915]
+        DVCp, = plt.plot(bpp, psnr, "y-o", color="peru", linewidth=LineWidth, label='DVC++')
+
         bpp = [0.272495739, 0.116933239, 0.058484612, 0.035880386]
         psnr = [40.28897112, 38.7756175, 37.19223474, 35.48255472]
         msssim = [0.988984555, 0.986157917, 0.982596303, 0.977072748]
@@ -132,9 +148,9 @@ def drawhevc(hclass):
     if not os.path.exists(prefix):
         os.makedirs(prefix)    
     if hclass != 'E':
-        plt.legend(handles=[h264, h265, DVC, RY, LU, RaFC], loc=4)
+        plt.legend(handles=[h264, h265, DVC, DVCp, RY, LU, RaFC], loc=4)
     else:
-        plt.legend(handles=[h264, h265, DVC, LU, RaFC], loc=4)
+        plt.legend(handles=[h264, h265, DVC, DVCp, LU, RaFC], loc=4)
 
     plt.grid()
     plt.xlabel('Bpp')
@@ -164,6 +180,10 @@ def drawhevc(hclass):
         msssim = [0.94666318, 0.95921518, 0.96812108, 0.97383252]
         bpp = [0.07658514, 0.11616374, 0.16643274, 0.2939271]
         DVC, = plt.plot(bpp, msssim, "y-p", linewidth=LineWidth, label='DVC')
+
+        bpp = [0.2824179, 0.15401706, 0.09166346, 0.06412788]
+        msssim = [0.97436334, 0.96841286, 0.960519, 0.94919218]
+        DVCp, = plt.plot(bpp, msssim, "y-o", color="peru", linewidth=LineWidth, label='DVC++')
 
         bpp = [0.569167464, 0.219282161, 0.110183846, 0.065360897]
         psnr = [35.79301018, 34.03927013, 32.59008599, 31.1074001]
@@ -197,6 +217,10 @@ def drawhevc(hclass):
         msssim = [0.9523096, 0.96620995, 0.9763428823, 0.981115925]
         DVC, = plt.plot(bpp, msssim, "y-o", linewidth=LineWidth, label='DVC')
 
+        bpp = [0.4111753326,  0.2770532, 0.185561475, 0.12688355]
+        msssim = [0.9837059, 0.97858455, 0.96894595, 0.955701925]
+        DVCp, = plt.plot(bpp, msssim, "y-o", color="peru", linewidth=LineWidth, label='DVC++')
+
         bpp = [0.576088116, 0.328202857, 0.193107239, 0.116934184]
         psnr = [34.63515097, 32.32511581, 30.15303183, 28.10807277]
         msssim = [0.983930296, 0.975657708, 0.963020551, 0.943658353]
@@ -227,6 +251,10 @@ def drawhevc(hclass):
         msssim = [0.95808245, 0.971744025, 0.981360625, 0.9863982]
         DVC, = plt.plot(bpp, msssim, "y-o", linewidth=LineWidth, label='DVC')
 
+        bpp = [0.4087568561,0.281171025, 0.199286125,0.13588435]
+        msssim = [0.98832555, 0.982999975, 0.974272125, 0.961972025]
+        DVCp, = plt.plot(bpp, msssim, "y-o", color="peru", linewidth=LineWidth, label='DVC++')
+
         bpp = [0.62866645, 0.369079861, 0.216769748, 0.130388726]
         psnr = [34.8324324, 32.26764653, 29.94494703, 27.82689033]
         msssim = [0.987974466, 0.980878777, 0.969883378, 0.952591233]
@@ -253,6 +281,10 @@ def drawhevc(hclass):
         msssim = [0.9768797, 0.9829584333, 0.9865011667, 0.9887121667]
         DVC, = plt.plot(bpp, msssim, "y-o", linewidth=LineWidth, label='DVC')
 
+        bpp = [0.1071702, 0.06180936667, 0.04365763333, 0.03117206667]
+        msssim = [0.9886938667, 0.9864564667, 0.9832413333, 0.9778337]
+        DVCp, = plt.plot(bpp, msssim, "y-o", color="peru", linewidth=LineWidth, label='DVC++')
+
         bpp = [0.272495739, 0.116933239, 0.058484612, 0.035880386]
         psnr = [40.28897112, 38.7756175, 37.19223474, 35.48255472]
         msssim = [0.988984555, 0.986157917, 0.982596303, 0.977072748]
@@ -268,9 +300,9 @@ def drawhevc(hclass):
         
     savepathmsssim = prefix + '/' + 'HEVCClass_' + hclass + '_msssim'# + '.eps'
     if hclass != 'E':
-        plt.legend(handles=[h264, h265, DVC, RY, LU, RaFC], loc=4)
+        plt.legend(handles=[h264, h265, DVC, DVCp, RY, LU, RaFC], loc=4)
     else:
-        plt.legend(handles=[h264, h265, DVC, LU, RaFC], loc=4)
+        plt.legend(handles=[h264, h265, DVC, DVCp, LU, RaFC], loc=4)
 
     plt.grid()
     plt.xlabel('Bpp')

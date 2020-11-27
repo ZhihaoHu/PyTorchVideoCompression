@@ -4,6 +4,7 @@
 ## Methods
 - <font color="#0343df">CW_ECCV18</font> : [Video Compression through Image Interpolation](https://arxiv.org/abs/1804.06919)
 - <font color="#c2bd1c">DVC</font> : [DVC: An End-to-end Deep Video Compression Framework](https://arxiv.org/abs/1812.00101)
+- <font color="#CD853F">DVC++</font> : [An End-to-End Learning Framework for Video Compression](https://ieeexplore.ieee.org/document/9072487)
 - <font color="#00bfbf">AD_ICCV19</font> : [Neural Inter-Frame Compression for Video Coding](https://openaccess.thecvf.com/content_ICCV_2019/papers/Djelouah_Neural_Inter-Frame_Compression_for_Video_Coding_ICCV_2019_paper.pdf)
 - <font color="#00FF00">AH_ICCV19</font> : [Video CompressionWith Rate-Distortion Autoencoders](https://arxiv.org/abs/1908.05717v2)
 - <font color="#008000">EA_CVPR20</font> : [Scale-space Flow for End-to-end Optimized Video Compression](https://openaccess.thecvf.com/content_CVPR_2020/papers/Agustsson_Scale-Space_Flow_for_End-to-End_Optimized_Video_Compression_CVPR_2020_paper.pdf)
@@ -37,6 +38,21 @@
 ## VTL dataset
 <!-- ![](VTLresults/VTL_psnr.png)![](VTLresults/VTL_msssim.png) -->
 ![](VTLresults/VTL.png)
+
+## BDBR Results
+
+BDBR results (%) when compared with H.264. Negative values in BDBR indicate bit-rate savings.
+
+| Datasets             | H.265  | DVC    | DVC++  | AD_ICCV19 | RY_CVPR20 | EA_CVPR20 | LU_ECCV20 | HU_ECCV20 |
+|:-----------------    | :----: | :----: | :----: | :-------: | :-------: | :-------: | :-------: | :-------: |
+| HEVC Class A Dataset | -14.75 | -24.53 |   -    |           |           |           |           | -32.32    |
+| HEVC Class B Dataset | -21.95 | -18.18 | -35.75 |           |  -28.94   |           |  -33.55   | -33.49    |
+| HEVC Class C Dataset | -14.48 |  1.60  | -14.62 |           |  -4.83    |           |  -17.70   | -14.30    |
+| HEVC Class D Dataset | -12.40 | -1.57  | -18.69 |           |  -21.47   |           |  -19.35   | -15.13    |
+| HEVC Class E Dataset | -30.81 | -26.91 | -42.24 |           |           |           |  -36.85   | -44.60    |
+| UVG Dataset          | -26.07 | -19.39 | -39.91 |  -47.39   |           |  -32.40   |  -30.52   | -35.76    |
+| MCL Dataset          | -23.86 | -14.51 |   -    |  -8.89    |           |  -24.74   |  -20.62   | -35.01    |
+| VTL Dataset          | -12.31 | -21.93 |   -    |  -12.25   |           |           |  -27.06   | -30.04    |
 
 
 ## Setting of H.264 and H.265
