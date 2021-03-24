@@ -40,8 +40,3 @@ class BitEstimator(nn.Module):
         x = self.f2(x)
         x = self.f3(x)
         return self.f4(x)
-        # for i in range(3):
-        #     # print(x.size(), F.softplus(self.h[i]).size())
-        #     x = x * F.softplus(self.h[i]) + self.b[i]
-        #     x = x + F.tanh(x) * F.tanh(self.a[i])
-        # return F.sigmoid(x * F.softplus(self.h[3]) + self.b[3])

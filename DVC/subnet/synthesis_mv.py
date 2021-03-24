@@ -43,24 +43,8 @@ class Synthesis_mv_net(nn.Module):
         self.deconv8 = nn.Conv2d(out_channel_mv, 2, 3, stride=1, padding=1)
         torch.nn.init.xavier_normal_(self.deconv8.weight.data, (math.sqrt(2 * 1 * (out_channel_mv + 2) / (out_channel_mv + out_channel_mv))))
         torch.nn.init.constant_(self.deconv8.bias.data, 0.01)
-        # self.encoder = nn.Sequential(
-        #     nn.ConvTranspose2d(out_channel_mv, out_channel_mv, 3, stride=2, padding=1, output_padding=1),
-        #     nn.LeakyReLU(negative_slope=0.1),
-        #     nn.Conv2d(out_channel_mv, out_channel_mv, 3, stride=1, padding=1),
-        #     nn.LeakyReLU(negative_slope=0.1),
-        #     nn.ConvTranspose2d(out_channel_mv, out_channel_mv, 3, stride=2, padding=1, output_padding=1),
-        #     nn.LeakyReLU(negative_slope=0.1),
-        #     nn.Conv2d(out_channel_mv, out_channel_mv, 3, stride=1, padding=1),
-        #     nn.LeakyReLU(negative_slope=0.1),
-        #     nn.ConvTranspose2d(out_channel_mv, out_channel_mv, 3, stride=2, padding=1, output_padding=1),
-        #     nn.LeakyReLU(negative_slope=0.1),
-        #     nn.Conv2d(out_channel_mv, out_channel_mv, 3, stride=1, padding=1),
-        #     nn.LeakyReLU(negative_slope=0.1),
-        #     nn.ConvTranspose2d(out_channel_mv, out_channel_mv, 3, stride=2, padding=1, output_padding=1),
-        #     nn.LeakyReLU(negative_slope=0.1),
-        #     nn.Conv2d(out_channel_mv, 2, 3, stride=1, padding=1),
-        # )
 
+        
     def forward(self, x):
         x = self.relu1(self.deconv1(x))
         x = self.relu2(self.deconv2(x))

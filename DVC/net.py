@@ -13,6 +13,7 @@ import torch.nn.init as init
 import logging
 from torch.nn.parameter import Parameter
 from subnet import *
+import torchac
 
 def save_model(model, iter):
     torch.save(model.state_dict(), "./snapshot/iter{}.model".format(iter))
@@ -52,6 +53,8 @@ class VideoCompressor(nn.Module):
         # self.flow_warp = Resample2d()
         # self.bitEstimator_feature = BitEstimator(out_channel_M)
         self.warp_weight = 0
+        self.mxrange = 150
+        self.calrealbits = False
 
     def forwardFirstFrame(self, x):
         output, bittrans = self.imageCompressor(x)
@@ -111,40 +114,94 @@ class VideoCompressor(nn.Module):
 
         warploss = torch.mean((warpframe - input_image).pow(2))
         interloss = torch.mean((prediction - input_image).pow(2))
-        # psnr_warp = tf.cond(
-        #     tf.equal(warploss, 0), lambda: tf.constant(100, dtype=tf.float32),
-        #     lambda: 10 * (tf.log(1 * 1 / warploss) / np.log(10)))
-
-        # ssim_r = tf_ms_ssim(recon_image[..., 0:1], input_image[..., 0:1])
-        # ssim_g = tf_ms_ssim(recon_image[..., 1:2], input_image[..., 1:2])
-        # ssim_b = tf_ms_ssim(recon_image[..., 2:3], input_image[..., 2:3])
-        # ms_ssim = (ssim_r + ssim_g + ssim_b) / 3
-        # ms_ssim_db = -10 * tf.log(1 - ms_ssim) / np.log(10)
-
-        # 117w
-        # 50Wfor mse+warp, then mse
-        # distortion = mse_loss + 0.1 * warploss
-        # distortion = mse_loss + self.warp_weight * warploss
+        
 
 # bit per pixel
 
         def feature_probs_based_sigma(feature, sigma):
+            
+            def getrealbitsg(x, gaussian):
+                # print("NIPS18noc : mn : ", torch.min(x), " - mx : ", torch.max(x), " range : ", self.mxrange)
+                cdfs = []
+                x = x + self.mxrange
+                n,c,h,w = x.shape
+                for i in range(-self.mxrange, self.mxrange):
+                    cdfs.append(gaussian.cdf(i - 0.5).view(n,c,h,w,1))
+                cdfs = torch.cat(cdfs, 4).cpu().detach()
+                
+                byte_stream = torchac.encode_float_cdf(cdfs, x.cpu().detach().to(torch.int16), check_input_bounds=True)
+
+                real_bits = torch.from_numpy(np.array([len(byte_stream) * 8])).float().cuda()
+
+                sym_out = torchac.decode_float_cdf(cdfs, byte_stream)
+
+                return sym_out - self.mxrange, real_bits
+
+
             mu = torch.zeros_like(sigma)
             sigma = sigma.clamp(1e-5, 1e10)
             gaussian = torch.distributions.laplace.Laplace(mu, sigma)
             probs = gaussian.cdf(feature + 0.5) - gaussian.cdf(feature - 0.5)
             total_bits = torch.sum(torch.clamp(-1.0 * torch.log(probs + 1e-5) / math.log(2.0), 0, 50))
+            
+            if self.calrealbits and not self.training:
+                decodedx, real_bits = getrealbitsg(feature, gaussian)
+                total_bits = real_bits
+
             return total_bits, probs
 
         def iclr18_estrate_bits_z(z):
+            
+            def getrealbits(x):
+                cdfs = []
+                x = x + self.mxrange
+                n,c,h,w = x.shape
+                for i in range(-self.mxrange, self.mxrange):
+                    cdfs.append(self.bitEstimator_z(i - 0.5).view(1, c, 1, 1, 1).repeat(1, 1, h, w, 1))
+                cdfs = torch.cat(cdfs, 4).cpu().detach()
+                byte_stream = torchac.encode_float_cdf(cdfs, x.cpu().detach().to(torch.int16), check_input_bounds=True)
+
+                real_bits = torch.sum(torch.from_numpy(np.array([len(byte_stream) * 8])).float().cuda())
+
+                sym_out = torchac.decode_float_cdf(cdfs, byte_stream)
+
+                return sym_out - self.mxrange, real_bits
+
             prob = self.bitEstimator_z(z + 0.5) - self.bitEstimator_z(z - 0.5)
             total_bits = torch.sum(torch.clamp(-1.0 * torch.log(prob + 1e-5) / math.log(2.0), 0, 50))
+
+
+            if self.calrealbits and not self.training:
+                decodedx, real_bits = getrealbits(z)
+                total_bits = real_bits
+
             return total_bits, prob
 
 
         def iclr18_estrate_bits_mv(mv):
+
+            def getrealbits(x):
+                cdfs = []
+                x = x + self.mxrange
+                n,c,h,w = x.shape
+                for i in range(-self.mxrange, self.mxrange):
+                    cdfs.append(self.bitEstimator_mv(i - 0.5).view(1, c, 1, 1, 1).repeat(1, 1, h, w, 1))
+                cdfs = torch.cat(cdfs, 4).cpu().detach()
+                byte_stream = torchac.encode_float_cdf(cdfs, x.cpu().detach().to(torch.int16), check_input_bounds=True)
+
+                real_bits = torch.sum(torch.from_numpy(np.array([len(byte_stream) * 8])).float().cuda())
+
+                sym_out = torchac.decode_float_cdf(cdfs, byte_stream)
+                return sym_out - self.mxrange, real_bits
+
             prob = self.bitEstimator_mv(mv + 0.5) - self.bitEstimator_mv(mv - 0.5)
             total_bits = torch.sum(torch.clamp(-1.0 * torch.log(prob + 1e-5) / math.log(2.0), 0, 50))
+
+
+            if self.calrealbits and not self.training:
+                decodedx, real_bits = getrealbits(mv)
+                total_bits = real_bits
+
             return total_bits, prob
 
         total_bits_feature, _ = feature_probs_based_sigma(compressed_feature_renorm, recon_sigma)
@@ -159,8 +216,5 @@ class VideoCompressor(nn.Module):
         bpp_mv = total_bits_mv / (batch_size * im_shape[2] * im_shape[3])
         bpp = bpp_feature + bpp_z + bpp_mv
         
-        # distribution_loss = bpp
-        # rd_loss = train_lambda * distortion + distribution_loss
-
         return clipped_recon_image, mse_loss, warploss, interloss, bpp_feature, bpp_z, bpp_mv, bpp
-        # return quant_mv_upsample, clipped_recon_image, mse_loss, warploss, interloss, bpp_feature, bpp_z, bpp_mv, bpp
+        

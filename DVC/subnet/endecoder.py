@@ -1,4 +1,3 @@
-import tensorflow as tf
 from .basics import *
 import numpy as np
 import imageio

@@ -25,13 +25,6 @@ class Synthesis_prior_net(nn.Module):
         self.deconv3 = nn.ConvTranspose2d(out_channel_N, out_channel_M, 3, stride=1, padding=1)
         torch.nn.init.xavier_normal_(self.deconv3.weight.data, (math.sqrt(2 * 1 * (out_channel_M + out_channel_N) / (out_channel_N + out_channel_N))))
         torch.nn.init.constant_(self.deconv3.bias.data, 0.01)
-        # self.priordecoder = nn.Sequential(
-        #     nn.ConvTranspose2d(out_channel_N, out_channel_N, 5, stride=2, padding=2, output_padding=1),
-        #     nn.ReLU(),
-        #     nn.ConvTranspose2d(out_channel_N, out_channel_N, 5, stride=2, padding=2, output_padding=1),
-        #     nn.ReLU(),
-        #     nn.ConvTranspose2d(out_channel_N, out_channel_M, 3, stride=1, padding=1)
-        # )
 
 
 
