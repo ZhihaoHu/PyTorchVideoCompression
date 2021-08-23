@@ -11,6 +11,9 @@ LineWidth = 2
 font = {'family': 'serif', 'weight': 'normal', 'size': 12}
 matplotlib.rc('font', **font)
 
+bpp, psnr = [0.306566, 0.195756, 0.133961, 0.092266], [35.019422, 33.60735, 32.281443, 30.989942]
+FVC, = plt.plot(bpp, psnr, "c-o", color="dimgrey", linewidth=LineWidth, label='FVC')
+
 
 bpp, psnr = [0.296787, 0.19001, 0.126534, 0.080851], [34.303688, 33.036154, 31.737594, 30.490966]
 rafc, = plt.plot(bpp, psnr, 'c-*', color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')
@@ -50,6 +53,8 @@ plt.clf()
 # msssim = [0.9718572754, 0.9711699173, 0.96866567, 0.9670768429, 0.9659088446, 0.961264922]
 # eccv, = plt.plot(bpp, msssim, "b-*", linewidth=LineWidth, label='Wu_ECCV')
 
+bpp, psnr = [0.292538, 0.189176, 0.113552, 0.072098], [0.989218, 0.984481, 0.97661, 0.966557]
+FVC, = plt.plot(bpp, psnr, "c-o", color="dimgrey", linewidth=LineWidth, label='FVC')
 
 bpp, msssim = [0.291837, 0.189759, 0.121654, 0.070671], [0.984102, 0.978341, 0.97124, 0.959966]
 rafc, = plt.plot(bpp, msssim, 'c-*', color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')

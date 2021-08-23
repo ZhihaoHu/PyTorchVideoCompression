@@ -18,6 +18,9 @@ LineWidth = 2
 # msssim = [0.9568914285714286, 0.9618171428571429, 0.9699657142857142, 0.9762942857142859]
 # MLVC, = plt.plot(bpp, psnr, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
 
+bpp, psnr = [0.150682, 0.089331, 0.061964, 0.04496], [38.029177, 37.062886, 36.041041, 34.854808]
+FVC, = plt.plot(bpp, psnr, "c-o", color="dimgrey", linewidth=LineWidth, label='FVC')
+
 
 bpp, psnr = [0.040222, 0.059522, 0.090525, 0.155768], [34.36477, 35.594595, 36.651909, 37.74166]
 rafc, = plt.plot(bpp, psnr, 'c-*', color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')
@@ -73,6 +76,8 @@ plt.clf()
 # msssim = [0.9568914285714286, 0.9618171428571429, 0.9699657142857142, 0.9762942857142859]
 # MLVC, = plt.plot(bpp, msssim, "m-o", color='darkorange', linewidth=LineWidth, label='M-LVC')
 
+bpp, psnr = [0.363749, 0.227332, 0.134257, 0.085478], [0.986765, 0.982525, 0.976374, 0.969245]
+FVC, = plt.plot(bpp, psnr, "c-o", color="dimgrey", linewidth=LineWidth, label='FVC')
 
 bpp, psnr = [0.218918, 0.130343, 0.077172, 0.04779], [0.978714, 0.972417, 0.965527, 0.956974]
 rafc, = plt.plot(bpp, psnr, 'c-*', color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')

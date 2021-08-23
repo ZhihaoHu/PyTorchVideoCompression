@@ -11,6 +11,9 @@ def drawhevca():
     font = {'family': 'serif', 'weight': 'normal', 'size': 12}
     matplotlib.rc('font', **font)
     LineWidth = 2
+    
+    bpp, psnr = [0.219236, 0.148642, 0.10431, 0.074957], [36.281859, 35.056085, 33.816517, 32.509582]
+    FVC, = plt.plot(bpp, psnr, "c-o", color="dimgrey", linewidth=LineWidth, label='FVC')
 
     bpp, psnr = [0.252517, 0.172729, 0.115206, 0.087225], [36.445944, 35.251347, 33.906883, 32.385862]
     RaFC, = plt.plot(bpp, psnr, "c-o", color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')
@@ -33,7 +36,7 @@ def drawhevca():
     print(prefix)
     if not os.path.exists(prefix):
         os.makedirs(prefix)
-    plt.legend(handles=[h264, h265, DVC, RaFC], loc=4)
+    plt.legend(handles=[h264, h265, DVC, RaFC, FVC], loc=4)
 
     plt.grid()
     plt.xlabel('Bpp')
@@ -44,6 +47,10 @@ def drawhevca():
     plt.clf()
 
     # ----------------------------------------MSSSIM-------------------------------------------------
+    
+    bpp, msssim = [0.37802, 0.23392, 0.138017, 0.09185], [0.990572, 0.986502, 0.980454, 0.973596]
+    FVC, = plt.plot(bpp, msssim, "c-o", color="dimgrey", linewidth=LineWidth, label='FVC')
+
     bpp, msssim = [0.302868, 0.194612, 0.128278, 0.075894], [0.986527, 0.981522, 0.97537, 0.966448]
     RaFC, = plt.plot(bpp, msssim, "c-o", color="blueviolet", linewidth=LineWidth, label='HU_ECCV20')
 
@@ -63,7 +70,7 @@ def drawhevca():
 
     savepathmsssim = prefix + '/' + 'HEVCClass_A_msssim'# + '.eps'
     
-    plt.legend(handles=[h264, h265, DVC, RaFC], loc=4)
+    plt.legend(handles=[h264, h265, DVC, RaFC, FVC], loc=4)
 
     plt.grid()
     plt.xlabel('Bpp')
