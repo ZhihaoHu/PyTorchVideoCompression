@@ -25,6 +25,9 @@ def drawhevc(hclass):
         bpp, psnr = [0.0688, 0.1093, 0.1883, 0.3536], [31.7031, 33.2380, 34.5965, 35.7882]
         RY, = plt.plot(bpp, psnr, "c-o", color="darkred", linewidth=LineWidth, label='RY_CVPR20')
 
+        bpp, psnr = [0.0585, 0.0788, 0.1441, 0.2829, 0.4317], [32.0663, 33.2903, 34.5443, 35.5753, 36.2262]
+        Liu, = plt.plot(bpp, psnr, "c-o", color="green", linewidth=LineWidth, label='Liu et al.')
+
         # bpp = [0.0661, 0.09362000000000001, 0.14695999999999998, 0.2232]
         # psnr = [32.721524294756705, 33.61284158051482, 34.75174138791608, 35.718610694312616]
         # msssim = [0.959144, 0.964186, 0.97111, 0.9765840000000001]
@@ -59,6 +62,9 @@ def drawhevc(hclass):
         
         bpp, psnr = [0.1117, 0.1951, 0.3158, 0.5441], [28.4321, 30.4874, 32.2846, 34.2527]
         RY, = plt.plot(bpp, psnr, "c-o", color="darkred", linewidth=LineWidth, label='RY_CVPR20')
+
+        bpp, psnr = [0.0996, 0.1481, 0.2522, 0.3971, 0.5109], [28.8004, 29.9462, 31.7668, 32.935, 33.4272]
+        Liu, = plt.plot(bpp, psnr, "c-o", color="green", linewidth=LineWidth, label='Liu et al.')
         
         # bpp = [0.12157499999999999, 0.17965, 0.271025, 0.38745]
         # psnr = [28.63609903605147, 29.944387388321196, 31.54062511303266, 33.03500011196936]
@@ -95,6 +101,9 @@ def drawhevc(hclass):
         bpp, psnr = [0.1173, 0.1990, 0.3347, 0.5589], [28.6544, 30.8125, 32.7950, 34.7743]
         RY, = plt.plot(bpp, psnr, "c-o", color="darkred", linewidth=LineWidth, label='RY_CVPR20')
 
+        bpp, psnr = [0.1018, 0.1486, 0.2473, 0.3817, 0.4838], [28.9021, 30.2752, 31.9603, 33.3702, 34.0233]
+        Liu, = plt.plot(bpp, psnr, "c-o", color="green", linewidth=LineWidth, label='Liu et al.')
+
         
         # bpp = [0.11227499999999999, 0.17395000000000002, 0.264575, 0.38207500000000005]
         # psnr = [28.82520179437781, 30.23478970812226, 31.91116994008828, 33.53631860458036]
@@ -128,6 +137,9 @@ def drawhevc(hclass):
         bpp, psnr = [0.11462,0.069586667,0.050683333,0.037183333], [40.11296333,38.96264,37.73251333,36.31533667]
         LU, = plt.plot(bpp, psnr, "c-o", color="royalblue", linewidth=LineWidth, label='LU_ECCV20')
 
+        bpp, psnr = [0.015, 0.0195, 0.0343, 0.0775, 0.1183], [35.3255, 36.647, 37.8434, 38.7762, 39.7742]
+        Liu, = plt.plot(bpp, psnr, "c-o", color="green", linewidth=LineWidth, label='Liu et al.')
+
         # bpp = [0.02223333333333333, 0.0281, 0.04416666666666667, 0.06459999999999999]
         # psnr = [36.119993400198794, 36.895272069830746, 37.95133358562974, 38.59336757723919]
         # msssim = [0.97991, 0.98177, 0.9831466666666667, 0.98547]
@@ -158,9 +170,9 @@ def drawhevc(hclass):
     if not os.path.exists(prefix):
         os.makedirs(prefix)    
     if hclass != 'E':
-        plt.legend(handles=[h264, h265, DVC, DVCp, RY, LU, RaFC, FVC], loc=4)
+        plt.legend(handles=[h264, h265, DVC, DVCp, RY, Liu, LU, RaFC, FVC], loc=4)
     else:
-        plt.legend(handles=[h264, h265, DVC, DVCp, LU, RaFC, FVC], loc=4)
+        plt.legend(handles=[h264, h265, DVC, DVCp, Liu, LU, RaFC, FVC], loc=4)
 
     plt.grid()
     plt.xlabel('Bpp')
@@ -183,6 +195,9 @@ def drawhevc(hclass):
         
         bpp, msssim = [0.0861, 0.1324, 0.2307, 0.4242], [0.9596, 0.9669, 0.9763, 0.9824]
         RY, = plt.plot(bpp, msssim, "c-o", color="darkred", linewidth=LineWidth, label='RY_CVPR20')
+
+        bpp, msssim = [0.0585, 0.0788, 0.1441, 0.2829, 0.4317], [0.9527, 0.9624, 0.971, 0.9773, 0.9823]
+        Liu, = plt.plot(bpp, msssim, "c-o", color="green", linewidth=LineWidth, label='Liu et al.')
 
         # bpp = [0.0661, 0.09362000000000001, 0.14695999999999998, 0.2232]
         # psnr = [32.721524294756705, 33.61284158051482, 34.75174138791608, 35.718610694312616]
@@ -219,6 +234,9 @@ def drawhevc(hclass):
         
         bpp, msssim = [0.1147, 0.1551, 0.2581, 0.4118], [0.9565, 0.9624, 0.9790, 0.9856]
         RY, = plt.plot(bpp, msssim, "c-o", color="darkred", linewidth=LineWidth, label='RY_CVPR20')
+
+        bpp, msssim = [0.0996, 0.1481, 0.2522, 0.3971, 0.5109], [0.9605, 0.9717, 0.9806, 0.9854, 0.988]
+        Liu, = plt.plot(bpp, msssim, "c-o", color="green", linewidth=LineWidth, label='Liu et al.')
 
 
         # bpp = [0.12157499999999999, 0.17965, 0.271025, 0.38745]
@@ -257,6 +275,9 @@ def drawhevc(hclass):
         bpp, msssim = [0.1072, 0.1496, 0.2376, 0.3794], [0.9633, 0.9693, 0.9833, 0.9891]
         RY, = plt.plot(bpp, msssim, "c-o", color="darkred", linewidth=LineWidth, label='RY_CVPR20')
 
+        bpp, msssim = [0.1018, 0.1486, 0.2473, 0.3817, 0.4838], [0.9676, 0.9774, 0.9844, 0.9888, 0.9912]
+        Liu, = plt.plot(bpp, msssim, "c-o", color="green", linewidth=LineWidth, label='Liu et al.')
+
         
         # bpp = [0.11227499999999999, 0.17395000000000002, 0.264575, 0.38207500000000005]
         # psnr = [28.82520179437781, 30.23478970812226, 31.91116994008828, 33.53631860458036]
@@ -289,6 +310,9 @@ def drawhevc(hclass):
 
         bpp, msssim = [0.11462,0.069586667,0.050683333,0.037183333], [0.988766667, 0.9864, 0.982756667, 0.976416667]
         LU, = plt.plot(bpp, msssim, "c-o", color="royalblue", linewidth=LineWidth, label='LU_ECCV20')
+
+        bpp, msssim = [0.015, 0.0195, 0.0343, 0.0775, 0.1183], [0.9766, 0.9807, 0.9831, 0.9851, 0.988]
+        Liu, = plt.plot(bpp, msssim, "c-o", color="green", linewidth=LineWidth, label='Liu et al.')
 
         # bpp = [0.02223333333333333, 0.0281, 0.04416666666666667, 0.06459999999999999]
         # psnr = [36.119993400198794, 36.895272069830746, 37.95133358562974, 38.59336757723919]
