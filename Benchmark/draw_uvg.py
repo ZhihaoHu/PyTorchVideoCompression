@@ -34,7 +34,7 @@ EA, = plt.plot(bpp, psnr, "g-o", color="orange", linewidth=LineWidth, label='EA_
 bpp, msssim = [0.0524, 0.0781, 0.1278, 0.2303], [34.5390, 35.8618, 37.1899, 38.4590]
 RY, = plt.plot(bpp, msssim, "c-o", color="darkred", linewidth=LineWidth, label='RY_CVPR20')
 
-bpp, psnr = [0.0437, 0.0612, 0.1083, 0.2128, 0.3112], [34.7485, 35.98, 37.1427, 38.2256, 39.0707]
+bpp, psnr = [0.1744, 0.0865, 0.0572, 0.0406], [38.1853, 37.0549, 35.9941, 34.702]
 Liu, = plt.plot(bpp, psnr, "c-o", color="green", linewidth=LineWidth, label='Liu et al.')
 
 bpp = [0.12377, 0.16239, 0.1983, 0.229, 0.2699, 0.3113]
@@ -63,7 +63,7 @@ savepathpsnr = prefix + '/UVG_psnr'
 print(prefix)
 if not os.path.exists(prefix):
     os.makedirs(prefix)
-plt.legend(handles=[h264, h265, DVC, DVCp, eccv, iccv, EA, RY, Liu, LU, rafc], loc=4)
+plt.legend(handles=[h264, h265, DVC, DVCp, eccv, iccv, EA, RY, Liu, LU, rafc, FVC], loc=4)
 plt.grid()
 plt.xlabel('Bpp')
 plt.ylabel('PSNR')
@@ -94,8 +94,8 @@ EA, = plt.plot(bpp, psnr, "g-o", color="orange", linewidth=LineWidth, label='EA_
 bpp, msssim = [0.0764, 0.1133, 0.2125, 0.3839], [0.9640, 0.9693, 0.9779, 0.9832]
 RY, = plt.plot(bpp, msssim, "c-o", color="darkred", linewidth=LineWidth, label='RY_CVPR20')
 
-bpp, msssim = [0.0437, 0.0612, 0.1083, 0.2128, 0.3112], [0.9537, 0.9619, 0.97, 0.9777, 0.9826]
-Liu, = plt.plot(bpp, psnr, "c-o", color="green", linewidth=LineWidth, label='Liu et al.')
+bpp, msssim = [0.5185, 0.3277, 0.1881, 0.1114], [0.9895, 0.98579, 0.98059, 0.97362]
+Liu, = plt.plot(bpp, msssim, "c-o", color="green", linewidth=LineWidth, label='Liu et al.')
 
 bpp = [0.12377, 0.16239, 0.1983, 0.229, 0.2699, 0.3113]
 msssim = [0.96126, 0.96591, 0.96708, 0.96867, 0.97117, 0.97186]
@@ -122,7 +122,7 @@ h265, = plt.plot(bpp, msssim, "r--v", linewidth=LineWidth, label='H.265')
 
 
 savepathmsssim = prefix + '/' + 'UVG_msssim'# + '.eps'
-plt.legend(handles=[h264, h265, DVC, DVCp, eccv, ha_iccv, iccv, EA, RY, Liu, LU, rafc], loc=4)
+plt.legend(handles=[h264, h265, DVC, DVCp, eccv, ha_iccv, iccv, EA, RY, Liu, LU, rafc, FVC], loc=4)
 plt.grid()
 plt.xlabel('Bpp')
 plt.ylabel('MS-SSIM')

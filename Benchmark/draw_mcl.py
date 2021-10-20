@@ -24,6 +24,9 @@ LU, = plt.plot(bpp, psnr, "c-o", color="royalblue", linewidth=LineWidth, label='
 bpp, psnr =  [0.043773, 0.065584, 0.093487, 0.152313, 0.260900, 0.416239], [33.459643, 34.659647, 36.299582, 37.555222, 38.784670, 39.781974]
 EA, = plt.plot(bpp, psnr, "g-o", color="orange", linewidth=LineWidth, label='EA_CVPR20')
 
+bpp, psnr = [0.2156, 0.1203, 0.082, 0.0628], [38.6349, 37.4613, 36.2621, 34.8514]
+Liu, = plt.plot(bpp, psnr, "c-o", color="green", linewidth=LineWidth, label='Liu et al.')
+
 
 # bpp = [0.07350666666666665, 0.09998666666666667, 0.14866666666666667, 0.20885666666666666]
 # psnr = [34.19015183584638, 34.97325683520819, 36.4162965039923, 37.564191921189945]
@@ -53,7 +56,7 @@ savepathpsnreps = prefix + '/MCL_psnr' + '.eps'
 print(prefix)
 if not os.path.exists(prefix):
     os.makedirs(prefix)
-plt.legend(handles=[h264, h265, DVC, iccv19, EA, LU, rafc], loc=4)
+plt.legend(handles=[h264, h265, DVC, iccv19, EA, LU, rafc, Liu, FVC], loc=4)
 plt.grid()
 plt.xlabel('Bpp')
 plt.ylabel('PSNR')
@@ -77,6 +80,9 @@ LU, = plt.plot(bpp, psnr, "c-o", color="royalblue", linewidth=LineWidth, label='
 bpp, psnr =  [0.039060, 0.059494, 0.084072, 0.122407, 0.228456, 0.326567], [0.958350, 0.965656, 0.973480, 0.977267, 0.984815, 0.987433]
 EA, = plt.plot(bpp, psnr, "g-o", color="orange", linewidth=LineWidth, label='EA_CVPR20')
 
+bpp, psnr = [0.4664, 0.2951, 0.1752, 0.1074], [0.99009, 0.98783, 0.98307, 0.9774]
+Liu, = plt.plot(bpp, psnr, "c-o", color="green", linewidth=LineWidth, label='Liu et al.')
+
 bpp = [0.067980956, 0.080343472, 0.102782285, 0.133500782, 0.18545014, 0.281805116, 0.376178686]#, 0.543077581]
 psnr = [34.33114855, 35.00107532, 35.7351181, 36.56075116, 37.47248012, 38.5945216, 39.43083815]#, 40.29353013]
 msssim = [0.956373977, 0.96103441, 0.966706579, 0.971418613, 0.976173806, 0.982212426, 0.984971718]#, 0.987377043]
@@ -97,7 +103,7 @@ h265, = plt.plot(bpp, msssim, "r--v", linewidth=LineWidth, label='H.265')
 
 savepathmsssim = prefix + '/' + 'MCL_msssim' + '.png'
 savepathmsssimeps = prefix + '/' + 'MCL_msssim' + '.eps'
-plt.legend(handles=[h264, h265, DVC, EA, iccv19, LU, rafc], loc=4)
+plt.legend(handles=[h264, h265, DVC, EA, iccv19, LU, rafc, Liu, FVC], loc=4)
 plt.grid()
 plt.xlabel('Bpp')
 plt.ylabel('MS-SSIM')
