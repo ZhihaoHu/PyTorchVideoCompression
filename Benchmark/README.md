@@ -13,6 +13,8 @@
 - <font color="#4169E1">LU_ECCV20</font> : [Content Adaptive and Error Propagation Aware Deep Video Compression](https://arxiv.org/pdf/2003.11282.pdf)
 - <font color="#696969">FVC</font> : [FVC: A New Framework towards Deep Video Compression in Feature Space](https://arxiv.org/pdf/2105.09600.pdf)
 - <font color="#15b01a">Liu et al.</font> : [Learned Video Compression with Residual Prediction and Loop Filter](https://arxiv.org/pdf/2108.08551.pdf)
+- <font color="#FFD61C">ELF</font> : [ELF-VC: Efficient Learned Flexible-Rate Video Coding](https://openaccess.thecvf.com/content/ICCV2021/papers/Rippel_ELF-VC_Efficient_Learned_Flexible-Rate_Video_Coding_ICCV_2021_paper.pdf)
+- <font color="#FF6BB3">DCVC</font> : [Deep Contextual Video Compression](https://proceedings.nips.cc/paper/2021/file/96b250a90d3cf0868c83f8c965142d2a-Paper.pdf)
 <!-- - <font color="#ff8c0f">M-LVC</font> : [M-LVC: Multiple Frames Prediction for Learned Video Compression](https://arxiv.org/abs/2004.10290) (questionable) -->
 
 
@@ -45,16 +47,16 @@
 
 BDBR results (%) when compared with H.264. Negative values in BDBR indicate bit-rate savings.
 
-| Datasets             | H.265  | DVC    | DVC++  | AD_ICCV19 | RY_CVPR20 | EA_CVPR20 | Liu et al. | LU_ECCV20 | HU_ECCV20 | FVC    |
-|:-----------------    | :----: | :----: | :----: | :-------: | :-------: | :-------: | :--------: | :-------: | :-------: | :----: |
-| HEVC Class A Dataset | -14.75 | -24.53 |        |           |           |           |            |           | -32.32    | -38.62 |
-| HEVC Class B Dataset | -21.95 | -18.18 | -35.75 |           |  -28.94   |           |   -51.59   |  -33.55   | -33.49    | -39.72 |
-| HEVC Class C Dataset | -14.48 |  1.60  | -14.62 |           |  -4.83    |           |   -30.95   |  -17.70   | -14.30    | -26.40 |
-| HEVC Class D Dataset | -12.40 | -1.57  | -18.69 |           |  -21.47   |           |   -41.48   |  -19.35   | -15.13    | -28.31 |
-| HEVC Class E Dataset | -30.81 | -26.91 | -42.24 |           |           |           |   -67.83   |  -36.85   | -44.60    | -42.16 |
-| UVG Dataset          | -26.07 | -19.39 | -39.91 |  -47.39   |           |  -32.40   |   -48.12   |  -30.52   | -35.76    | -46.28 |
-| MCL Dataset          | -23.86 | -14.51 |        |  -8.89    |           |  -24.74   |   -37.12   |  -20.62   | -35.01    | -40.52 |
-| VTL Dataset          | -12.31 | -21.93 |        |  -12.25   |           |           |   -46.58   |  -27.06   | -30.04    | -36.53 |
+| Datasets             | H.265  | DVC    | DVC++  | AD_ICCV19 | RY_CVPR20 | EA_CVPR20 | Liu et al. | LU_ECCV20 | HU_ECCV20 | FVC    | ELF    | DCVC   |
+|:-----------------    | :----: | :----: | :----: | :-------: | :-------: | :-------: | :--------: | :-------: | :-------: | :----: | :----: | :----: |
+| HEVC Class A Dataset | -14.75 | -24.53 |        |           |           |           |            |           | -32.32    | -38.62 |        |        |
+| HEVC Class B Dataset | -21.95 | -18.18 | -35.75 |           |  -28.94   |           |   -51.59   |  -33.55   | -33.49    | -39.72 |        | -51.97 |
+| HEVC Class C Dataset | -14.48 |  1.60  | -14.62 |           |  -4.83    |           |   -30.95   |  -17.70   | -14.30    | -26.40 |        | -28.98 |
+| HEVC Class D Dataset | -12.40 | -1.57  | -18.69 |           |  -21.47   |           |   -41.48   |  -19.35   | -15.13    | -28.31 |        | -36.49 |
+| HEVC Class E Dataset | -30.81 | -26.91 | -42.24 |           |           |           |   -67.83   |  -36.85   | -44.60    | -42.16 |        | -42.25 |
+| UVG Dataset          | -26.07 | -19.39 | -39.91 |  -47.39   |           |  -32.40   |   -48.12   |  -30.52   | -35.76    | -46.28 | -57.05 | -48.21 |
+| MCL Dataset          | -23.86 | -14.51 |        |  -8.89    |           |  -24.74   |   -37.12   |  -20.62   | -35.01    | -40.52 | -47.77 | -43.22 |
+| VTL Dataset          | -12.31 | -21.93 |        |  -12.25   |           |           |   -46.58   |  -27.06   | -30.04    | -36.53 |        |        |
 
 
 ## Setting of H.264 and H.265

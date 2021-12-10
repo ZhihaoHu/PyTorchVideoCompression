@@ -37,6 +37,12 @@ RY, = plt.plot(bpp, msssim, "c-o", color="darkred", linewidth=LineWidth, label='
 bpp, psnr = [0.1744, 0.0865, 0.0572, 0.0406], [38.1853, 37.0549, 35.9941, 34.702]
 Liu, = plt.plot(bpp, psnr, "c-o", color="green", linewidth=LineWidth, label='Liu et al.')
 
+bpp, psnr = [0.022278671428571428, 0.03234948571428571, 0.048048985714285716, 0.07333342857142858, 0.10288118571428573, 0.17053944285714287], [33.98692857142857, 35.08148571428571, 36.07285714285714, 37.00525714285714, 37.60955714285715, 38.5164]
+ELF, = plt.plot(bpp, psnr, "y-o", color="gold", linewidth=LineWidth, label='ELF-VC')
+
+bpp, psnr = [0.02709702142196456, 0.04098199165086189, 0.06370908663667266, 0.10385984934969908], [34.011881197066536, 35.20922313871838, 36.35551458086286, 37.444169357844764] 
+DCVC, = plt.plot(bpp, psnr, "y-o", color="hotpink", linewidth=LineWidth, label='DCVC')
+
 bpp = [0.12377, 0.16239, 0.1983, 0.229, 0.2699, 0.3113]
 psnr = [36.0736, 36.663, 36.9157, 37.1818, 37.5149, 37.6513]
 eccv, = plt.plot(bpp, psnr, "b-*", linewidth=LineWidth, label='CW_ECCV18')
@@ -63,7 +69,7 @@ savepathpsnr = prefix + '/UVG_psnr'
 print(prefix)
 if not os.path.exists(prefix):
     os.makedirs(prefix)
-plt.legend(handles=[h264, h265, DVC, DVCp, eccv, iccv, EA, RY, Liu, LU, rafc, FVC], loc=4)
+plt.legend(handles=[h264, h265, DVC, DVCp, eccv, iccv, EA, RY, Liu, LU, rafc, FVC, ELF, DCVC], loc=4)
 plt.grid()
 plt.xlabel('Bpp')
 plt.ylabel('PSNR')
@@ -97,6 +103,12 @@ RY, = plt.plot(bpp, msssim, "c-o", color="darkred", linewidth=LineWidth, label='
 bpp, msssim = [0.5185, 0.3277, 0.1881, 0.1114], [0.9895, 0.98579, 0.98059, 0.97362]
 Liu, = plt.plot(bpp, msssim, "c-o", color="green", linewidth=LineWidth, label='Liu et al.')
 
+bpp, msssim = [0.026518999999999997, 0.045849528571428565, 0.07756718571428571, 0.13408444285714285, 0.22206234285714288, 0.36636842857142854], [0.9544165714285715, 0.9643894285714285, 0.9716755714285714, 0.9783591428571429, 0.9836682857142857, 0.9878185714285713]
+ELF, = plt.plot(bpp, msssim, "y-o", color="gold", linewidth=LineWidth, label='ELF-VC')
+
+bpp, msssim = [0.06470023000139802, 0.117681422150206, 0.21378619037745963, 0.33380794143865977], [0.9653042291601499, 0.9746489052971204, 0.9819777869752475, 0.9872394470941452] 
+DCVC, = plt.plot(bpp, msssim, "y-o", color="hotpink", linewidth=LineWidth, label='DCVC')
+
 bpp = [0.12377, 0.16239, 0.1983, 0.229, 0.2699, 0.3113]
 msssim = [0.96126, 0.96591, 0.96708, 0.96867, 0.97117, 0.97186]
 eccv, = plt.plot(bpp, msssim, "b-*", linewidth=LineWidth, label='CW_ECCV18')
@@ -122,7 +134,7 @@ h265, = plt.plot(bpp, msssim, "r--v", linewidth=LineWidth, label='H.265')
 
 
 savepathmsssim = prefix + '/' + 'UVG_msssim'# + '.eps'
-plt.legend(handles=[h264, h265, DVC, DVCp, eccv, ha_iccv, iccv, EA, RY, Liu, LU, rafc, FVC], loc=4)
+plt.legend(handles=[h264, h265, DVC, DVCp, eccv, ha_iccv, iccv, EA, RY, Liu, LU, rafc, FVC, ELF, DCVC], loc=4)
 plt.grid()
 plt.xlabel('Bpp')
 plt.ylabel('MS-SSIM')
