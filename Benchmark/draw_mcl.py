@@ -47,14 +47,23 @@ iccv19, = plt.plot(bpp, psnr, "c-*", linewidth=LineWidth, label='AD_ICCV19')
 bpp, psnr, msssim = [0.063445, 0.090866, 0.129456, 0.204172], [34.275199, 35.656182, 36.862051, 38.003749], [0.953543, 0.964906, 0.972667, 0.978116]
 DVC, = plt.plot(bpp, psnr, "y-o", linewidth=LineWidth, label='DVC')
 
-# Ours default
-bpp, psnr, msssim = [0.415409871, 0.186455224, 0.096197474, 0.05784043], [38.95635439, 37.12659472, 35.54274685, 33.96921318], [0.983710123, 0.975398139, 0.966838741, 0.956096359]
-h264, = plt.plot(bpp, psnr, "m--s", linewidth=LineWidth, label='H.264')
+bpp, psnr = [0.204917, 0.123134, 0.083819, 0.052188], [39.210012, 38.194799, 37.252419, 36.053591]
+C2F, = plt.plot(bpp, psnr, "y-o", color="indigo", linewidth=LineWidth, label='C2F')
 
-bpp = [0.335718128, 0.151147044, 0.075029043, 0.042250736]
-psnr = [38.87289862, 37.21245689, 35.68806736, 34.13927989]
-msssim = [0.981549357, 0.974198804, 0.966348014, 0.956139709]
-h265, = plt.plot(bpp, psnr, "r--v", linewidth=LineWidth, label='H.265')
+# Ours default
+# bpp, psnr, msssim = [0.415409871, 0.186455224, 0.096197474, 0.05784043], [38.95635439, 37.12659472, 35.54274685, 33.96921318], [0.983710123, 0.975398139, 0.966838741, 0.956096359]
+# h264, = plt.plot(bpp, psnr, "m--s", linewidth=LineWidth, label='H.264')
+
+# bpp = [0.335718128, 0.151147044, 0.075029043, 0.042250736]
+# psnr = [38.87289862, 37.21245689, 35.68806736, 34.13927989]
+# msssim = [0.981549357, 0.974198804, 0.966348014, 0.956139709]
+# h265, = plt.plot(bpp, psnr, "r--v", linewidth=LineWidth, label='H.265')
+
+bpp, psnr, msssim = [0.158163682, 0.083452922, 0.047839759, 0.029251102], [38.53680791, 37.19704719, 35.8682293, 34.66009104], [0.978565985, 0.972857914, 0.966124373, 0.957971806]
+HM, = plt.plot(bpp, psnr, "r--v", linewidth=LineWidth, label='HM')
+
+bpp, psnr, msssim = [0.136736442037515, 0.0670341156117102, 0.0374102454419172, 0.0221052901684006], [38.5088890794119, 37.1940123059836, 35.9136068283541, 34.672893890491], [0.97846281349025, 0.972782567801869, 0.966698353858581, 0.958620965561768]
+VTM, = plt.plot(bpp, psnr, "b--v", linewidth=LineWidth, label='VTM')
 
 
 savepathpsnr = prefix + '/MCL_psnr' + '.png'
@@ -62,7 +71,7 @@ savepathpsnreps = prefix + '/MCL_psnr' + '.eps'
 print(prefix)
 if not os.path.exists(prefix):
     os.makedirs(prefix)
-plt.legend(handles=[h264, h265, DVC, iccv19, EA, LU, rafc, Liu, FVC, ELF, DCVC], loc=4)
+plt.legend(handles=[HM, VTM, DVC, iccv19, EA, LU, rafc, Liu, FVC, ELF, DCVC, C2F], loc=4)
 plt.grid()
 plt.xlabel('Bpp')
 plt.ylabel('PSNR')
@@ -103,19 +112,28 @@ iccv19, = plt.plot(bpp, msssim, "c-*", linewidth=LineWidth, label='AD_ICCV19')
 bpp, psnr, msssim = [0.063445, 0.090866, 0.129456, 0.204172], [34.275199, 35.656182, 36.862051, 38.003749], [0.953543, 0.964906, 0.972667, 0.978116]
 DVC, = plt.plot(bpp, msssim, "y-o", linewidth=LineWidth, label='DVC')
 
-#default
-bpp, psnr, msssim = [0.415409871, 0.186455224, 0.096197474, 0.05784043], [38.95635439, 37.12659472, 35.54274685, 33.96921318], [0.983710123, 0.975398139, 0.966838741, 0.956096359]
-h264, = plt.plot(bpp, msssim, "m--s", linewidth=LineWidth, label='H.264')
+bpp, msssim = [0.267879, 0.147459, 0.084217, 0.051453], [0.988898, 0.983968, 0.978599, 0.972453]
+C2F, = plt.plot(bpp, msssim, "y-o", color="indigo", linewidth=LineWidth, label='C2F')
 
-bpp = [0.335718128, 0.151147044, 0.075029043, 0.042250736]
-psnr = [38.87289862, 37.21245689, 35.68806736, 34.13927989]
-msssim = [0.981549357, 0.974198804, 0.966348014, 0.956139709]
-h265, = plt.plot(bpp, msssim, "r--v", linewidth=LineWidth, label='H.265')
+#default
+# bpp, psnr, msssim = [0.415409871, 0.186455224, 0.096197474, 0.05784043], [38.95635439, 37.12659472, 35.54274685, 33.96921318], [0.983710123, 0.975398139, 0.966838741, 0.956096359]
+# h264, = plt.plot(bpp, msssim, "m--s", linewidth=LineWidth, label='H.264')
+
+# bpp = [0.335718128, 0.151147044, 0.075029043, 0.042250736]
+# psnr = [38.87289862, 37.21245689, 35.68806736, 34.13927989]
+# msssim = [0.981549357, 0.974198804, 0.966348014, 0.956139709]
+# h265, = plt.plot(bpp, msssim, "r--v", linewidth=LineWidth, label='H.265')
+
+bpp, psnr, msssim = [0.158163682, 0.083452922, 0.047839759, 0.029251102], [38.53680791, 37.19704719, 35.8682293, 34.66009104], [0.978565985, 0.972857914, 0.966124373, 0.957971806]
+HM, = plt.plot(bpp, msssim, "r--v", linewidth=LineWidth, label='HM')
+
+bpp, psnr, msssim = [0.136736442037515, 0.0670341156117102, 0.0374102454419172, 0.0221052901684006], [38.5088890794119, 37.1940123059836, 35.9136068283541, 34.672893890491], [0.97846281349025, 0.972782567801869, 0.966698353858581, 0.958620965561768]
+VTM, = plt.plot(bpp, msssim, "b--v", linewidth=LineWidth, label='VTM')
 
 
 savepathmsssim = prefix + '/' + 'MCL_msssim' + '.png'
 savepathmsssimeps = prefix + '/' + 'MCL_msssim' + '.eps'
-plt.legend(handles=[h264, h265, DVC, EA, iccv19, LU, rafc, Liu, FVC, ELF, DCVC], loc=4)
+plt.legend(handles=[HM, VTM, DVC, EA, iccv19, LU, rafc, Liu, FVC, ELF, DCVC, C2F], loc=4)
 plt.grid()
 plt.xlabel('Bpp')
 plt.ylabel('MS-SSIM')
