@@ -270,8 +270,8 @@ if __name__ == "__main__":
         exit(0)
 
     tb_logger = SummaryWriter('./events')
-    train_dataset = DataSet("data/vimeo_septuplet/test.txt")
-    # test_dataset = UVGDataSet(refdir=ref_i_dir)
+    train_dataset = DataSet("/home/hyojinchoi/weekX/PyTorchVideoCompression/DVC/data/vimeo_septuplet/test.txt")
+    test_dataset = UVGDataSet(refdir=ref_i_dir)
     stepoch = global_step // (train_dataset.__len__() // (gpu_per_batch))# * gpu_num))
     for epoch in range(stepoch, tot_epoch):
         adjust_learning_rate(optimizer, global_step)
