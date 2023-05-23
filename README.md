@@ -8,8 +8,8 @@ PyTorch implementation and benchmark of Video Compression
 ## Benchmark
 
 
-### HEVC Class A dataset
-![](Benchmark/HEVCresults/HEVCClass_A.png)
+<!-- ### HEVC Class A dataset -->
+<!-- ![](Benchmark/HEVCresults/HEVCClass_A.png) -->
 ### HEVC Class B dataset
 ![](Benchmark/HEVCresults/HEVCClass_B.png)
 ### HEVC Class C dataset
@@ -22,8 +22,8 @@ PyTorch implementation and benchmark of Video Compression
 ![](Benchmark/UVGresults/UVG.png)
 ### MCL-JCV dataset
 ![](Benchmark/MCLresults/MCL.png)
-### VTL dataset
-![](Benchmark/VTLresults/VTL.png)
+<!-- ### VTL dataset -->
+<!-- ![](Benchmark/VTLresults/VTL.png) -->
 
 
 # Contact

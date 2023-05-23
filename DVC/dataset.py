@@ -53,16 +53,19 @@ class UVGDataSet(data.Dataset):
         Ibpp = None
         if ref_i_folder == 'H265L20':
             print('use H265L20')
-            Ibpp = []# you need to fill bpps after generating crf=20
+            Ibpp = [1.213396484375, 0.6849548339843748, 0.8600716145833333, 0.6581201985677083, 0.6985362955729166, 0.7548777669270834, 0.6584032389322916]# you need to fill bpps after generating crf=20
         elif ref_i_folder == 'H265L23':
             print('use H265L23')
-            Ibpp = []# you need to fill bpps after generating crf=23
+            Ibpp = [0.6781825358072916, 0.46543627929687503, 0.5208554687500001, 0.35492000325520834, 0.4952764485677082, 0.5092376302083333, 0.46510823567708337]# you need to fill bpps after generating crf=23
+            # final bpp 0.4984309430803572
         elif ref_i_folder == 'H265L26':
             print('use H265L26')
-            Ibpp = []# you need to fill bpps after generating crf=26
+            Ibpp = [0.31613256835937503, 0.3216608072916667, 0.33581868489583333, 0.19616520182291666, 0.36005086263020836, 0.35370100911458335, 0.33273413085937503]# you need to fill bpps after generating crf=26
+            # final bpp 0.31660903785342265
         elif ref_i_folder == 'H265L29':
             print('use H265L29')
-            Ibpp = []# you need to fill bpps after generating crf=29
+            Ibpp = [0.13072729492187501, 0.22285115559895832, 0.2382386881510417, 0.12693098958333335, 0.265823486328125, 0.25438053385416665, 0.23811816406250003]# you need to fill bpps after generating crf=29
+            # final bpp 0.21101004464285716
         else:
             print('cannot find ref : ', ref_i_folder)
             exit()
@@ -95,7 +98,7 @@ class UVGDataSet(data.Dataset):
         return input_images, ref_image, self.refbpp[index], refpsnr, refmsssim
 
 class DataSet(data.Dataset):
-    def __init__(self, path="data/vimeo_septuplet/test.txt", im_height=256, im_width=256):
+    def __init__(self, path="/home/hyojinchoi/weekX/PyTorchVideoCompression/DVC/data/vimeo_septuplet/test.txt", im_height=256, im_width=256):
         self.image_input_list, self.image_ref_list = self.get_vimeo(filefolderlist=path)
         self.im_height = im_height
         self.im_width = im_width
@@ -105,7 +108,7 @@ class DataSet(data.Dataset):
         self.mvnois = torch.zeros([out_channel_mv, self.im_height // 16, self.im_width // 16])
         print("dataset find image: ", len(self.image_input_list))
 
-    def get_vimeo(self, rootdir="data/vimeo_septuplet/sequences/", filefolderlist="data/vimeo_septuplet/test.txt"):
+    def get_vimeo(self, rootdir="/home/hyojinchoi/weekX/PyTorchVideoCompression/DVC/data/vimeo_septuplet/sequences/", filefolderlist="/home/hyojinchoi/weekX/PyTorchVideoCompression/DVC/data/vimeo_septuplet/test.txt"):
         with open(filefolderlist) as f:
             data = f.readlines()
             
