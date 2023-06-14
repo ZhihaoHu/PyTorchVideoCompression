@@ -26,10 +26,10 @@ class UVGDataSet(data.Dataset):
                     cnt += 1
 
             if testfull:
-                framerange = cnt // 120
-                if cnt % 120 > 0:
+                framerange = cnt // 12
+                if cnt % 12 > 0:
                     framerange += 1
-                gop = 120
+                gop = 12
             else:
                 framerange = 1
                 gop = 12
