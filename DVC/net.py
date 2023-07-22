@@ -13,7 +13,7 @@ import torch.nn.init as init
 import logging
 from torch.nn.parameter import Parameter
 from subnet import *
-import torchac
+import torch_ac
 
 def save_model(model, iter):
     torch.save(model.state_dict(), "./snapshot/iter{}.model".format(iter))
@@ -129,11 +129,11 @@ class VideoCompressor(nn.Module):
                     cdfs.append(gaussian.cdf(i - 0.5).view(n,c,h,w,1))
                 cdfs = torch.cat(cdfs, 4).cpu().detach()
                 
-                byte_stream = torchac.encode_float_cdf(cdfs, x.cpu().detach().to(torch.int16), check_input_bounds=True)
+                byte_stream = torch_ac.encode_float_cdf(cdfs, x.cpu().detach().to(torch.int16), check_input_bounds=True)
 
                 real_bits = torch.from_numpy(np.array([len(byte_stream) * 8])).float().cuda()
 
-                sym_out = torchac.decode_float_cdf(cdfs, byte_stream)
+                sym_out = torch_ac.decode_float_cdf(cdfs, byte_stream)
 
                 return sym_out - self.mxrange, real_bits
 
@@ -159,11 +159,11 @@ class VideoCompressor(nn.Module):
                 for i in range(-self.mxrange, self.mxrange):
                     cdfs.append(self.bitEstimator_z(i - 0.5).view(1, c, 1, 1, 1).repeat(1, 1, h, w, 1))
                 cdfs = torch.cat(cdfs, 4).cpu().detach()
-                byte_stream = torchac.encode_float_cdf(cdfs, x.cpu().detach().to(torch.int16), check_input_bounds=True)
+                byte_stream = torch_ac.encode_float_cdf(cdfs, x.cpu().detach().to(torch.int16), check_input_bounds=True)
 
                 real_bits = torch.sum(torch.from_numpy(np.array([len(byte_stream) * 8])).float().cuda())
 
-                sym_out = torchac.decode_float_cdf(cdfs, byte_stream)
+                sym_out = torch_ac.decode_float_cdf(cdfs, byte_stream)
 
                 return sym_out - self.mxrange, real_bits
 
@@ -187,11 +187,11 @@ class VideoCompressor(nn.Module):
                 for i in range(-self.mxrange, self.mxrange):
                     cdfs.append(self.bitEstimator_mv(i - 0.5).view(1, c, 1, 1, 1).repeat(1, 1, h, w, 1))
                 cdfs = torch.cat(cdfs, 4).cpu().detach()
-                byte_stream = torchac.encode_float_cdf(cdfs, x.cpu().detach().to(torch.int16), check_input_bounds=True)
+                byte_stream = torch_ac.encode_float_cdf(cdfs, x.cpu().detach().to(torch.int16), check_input_bounds=True)
 
                 real_bits = torch.sum(torch.from_numpy(np.array([len(byte_stream) * 8])).float().cuda())
 
-                sym_out = torchac.decode_float_cdf(cdfs, byte_stream)
+                sym_out = torch_ac.decode_float_cdf(cdfs, byte_stream)
                 return sym_out - self.mxrange, real_bits
 
             prob = self.bitEstimator_mv(mv + 0.5) - self.bitEstimator_mv(mv - 0.5)
