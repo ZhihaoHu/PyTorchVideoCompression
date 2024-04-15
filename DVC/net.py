@@ -15,8 +15,8 @@ from torch.nn.parameter import Parameter
 from subnet import *
 import torchac
 
-def save_model(model, iter):
-    torch.save(model.state_dict(), "./snapshot/iter{}.model".format(iter))
+def save_model(model, iter, snapshot_dir):
+    torch.save(model.state_dict(), os.path.join(snapshot_dir, "iter{}.model".format(iter)))
 
 def load_model(model, f):
     with open(f, 'rb') as f:

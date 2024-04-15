@@ -44,6 +44,8 @@ parser.add_argument('-l', '--log', default='',
         help='output training details')
 parser.add_argument('-p', '--pretrain', default = '',
         help='load pretrain model')
+parser.add_argument('--snapshot_dir', default = './snapshot',
+        help='snapshot dir where to save weights')
 parser.add_argument('--test', action='store_true')
 parser.add_argument('--testuvg', action='store_true')
 parser.add_argument('--testvtl', action='store_true')
@@ -276,7 +278,7 @@ if __name__ == "__main__":
     for epoch in range(stepoch, tot_epoch):
         adjust_learning_rate(optimizer, global_step)
         if global_step > tot_step:
-            save_model(model, global_step)
+            save_model(model, global_step, args.snapshot_dir)
             break
         global_step = train(epoch, global_step)
-        save_model(model, global_step)
+        save_model(model, global_step, args.snapshot_dir)
