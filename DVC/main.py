@@ -135,7 +135,7 @@ def testuvg(global_step, testfull=False):
         uvgdrawplt([sumbpp], [sumpsnr], [summsssim], global_step, testfull=testfull)
 
 
-def train(epoch, global_step):
+def train(epoch, global_step, loss_csv):
 
     print ("epoch", epoch)
     global gpu_per_batch
@@ -144,8 +144,9 @@ def train(epoch, global_step):
 
     global optimizer
     bat_cnt = 0
-    cal_cnt = 0
     sumloss = 0
+    sumdistortion = 0
+    sumdistributionloss = 0
     sumpsnr = 0
     suminterpsnr = 0
     sumwarppsnr = 0
@@ -155,6 +156,7 @@ def train(epoch, global_step):
     sumbpp_z = 0
     tot_iter = len(train_loader)
     t0 = datetime.datetime.now()
+    loss_log = open(loss_csv, 'a')
     for batch_idx, input in enumerate(train_loader):
         global_step += 1
         bat_cnt += 1
@@ -184,55 +186,55 @@ def train(epoch, global_step):
                         param.grad.data.clamp_(-grad_clip, grad_clip)
         clip_gradient(optimizer, 0.5)
         optimizer.step()
-        if global_step % cal_step == 0:
-            cal_cnt += 1
-            if mse_loss > 0:
-                psnr = 10 * (torch.log(1 * 1 / mse_loss) / np.log(10)).cpu().detach().numpy()
-            else:
-                psnr = 100
-            if warploss > 0:
-                warppsnr = 10 * (torch.log(1 * 1 / warploss) / np.log(10)).cpu().detach().numpy()
-            else:
-                warppsnr = 100
-            if interloss > 0:
-                interpsnr = 10 * (torch.log(1 * 1 / interloss) / np.log(10)).cpu().detach().numpy()
-            else:
-                interpsnr = 100
+        if mse_loss > 0:
+            psnr = 10 * (torch.log(1 * 1 / mse_loss) / np.log(10)).cpu().detach().numpy()
+        else:
+            psnr = 100
+        if warploss > 0:
+            warppsnr = 10 * (torch.log(1 * 1 / warploss) / np.log(10)).cpu().detach().numpy()
+        else:
+            warppsnr = 100
+        if interloss > 0:
+            interpsnr = 10 * (torch.log(1 * 1 / interloss) / np.log(10)).cpu().detach().numpy()
+        else:
+            interpsnr = 100
 
-            loss_ = rd_loss.cpu().detach().numpy()
+        loss_ = rd_loss.cpu().detach().numpy()
 
-            sumloss += loss_
-            sumpsnr += psnr
-            suminterpsnr += interpsnr
-            sumwarppsnr += warppsnr
-            sumbpp += bpp.cpu().detach()
-            sumbpp_feature += bpp_feature.cpu().detach()
-            sumbpp_mv += bpp_mv.cpu().detach()
-            sumbpp_z += bpp_z.cpu().detach()
+        sumloss += loss_
+        sumdistortion += distortion.cpu().detach().numpy()
+        sumdistributionloss += distribution_loss.cpu().detach().numpy()
+        sumpsnr += psnr
+        suminterpsnr += interpsnr
+        sumwarppsnr += warppsnr
+        sumbpp += bpp.cpu().detach()
+        sumbpp_feature += bpp_feature.cpu().detach()
+        sumbpp_mv += bpp_mv.cpu().detach()
+        sumbpp_z += bpp_z.cpu().detach()
 
 
         if (batch_idx % print_step)== 0 and bat_cnt > 1:
-            tb_logger.add_scalar('lr', cur_lr, global_step)
-            tb_logger.add_scalar('rd_loss', sumloss / cal_cnt, global_step)
-            tb_logger.add_scalar('psnr', sumpsnr / cal_cnt, global_step)
-            tb_logger.add_scalar('warppsnr', sumwarppsnr / cal_cnt, global_step)
-            tb_logger.add_scalar('interpsnr', suminterpsnr / cal_cnt, global_step)
-            tb_logger.add_scalar('bpp', sumbpp / cal_cnt, global_step)
-            tb_logger.add_scalar('bpp_feature', sumbpp_feature / cal_cnt, global_step)
-            tb_logger.add_scalar('bpp_z', sumbpp_z / cal_cnt, global_step)
-            tb_logger.add_scalar('bpp_mv', sumbpp_mv / cal_cnt, global_step)
             t1 = datetime.datetime.now()
             deltatime = t1 - t0
-            log = 'Train Epoch : {:02} [{:4}/{:4} ({:3.0f}%)] Avgloss:{:.6f} lr:{} time:{}'.format(epoch, batch_idx, len(train_loader), 100. * batch_idx / len(train_loader), sumloss / cal_cnt, cur_lr, (deltatime.seconds + 1e-6 * deltatime.microseconds) / bat_cnt)
+            log = 'Train Epoch : {:02} [{:4}/{:4} ({:3.0f}%)] Avgloss:{:.6f} lr:{} time:{}'.format(epoch, batch_idx, len(train_loader), 100. * batch_idx / len(train_loader), sumloss / bat_cnt, cur_lr, (deltatime.seconds + 1e-6 * deltatime.microseconds) / bat_cnt)
             print(log)
-            log = 'details : warppsnr : {:.2f} interpsnr : {:.2f} psnr : {:.2f}'.format(sumwarppsnr / cal_cnt, suminterpsnr / cal_cnt, sumpsnr / cal_cnt)
+            log = 'details : warppsnr : {:.2f} interpsnr : {:.2f} psnr : {:.2f}'.format(sumwarppsnr / bat_cnt, suminterpsnr / bat_cnt, sumpsnr / bat_cnt)
             print(log)
-            bat_cnt = 0
-            cal_cnt = 0
-            sumbpp = sumbpp_feature = sumbpp_mv = sumbpp_z = sumloss = sumpsnr = suminterpsnr = sumwarppsnr = 0
             t0 = t1
-    log = 'Train Epoch : {:02} Loss:\t {:.6f}\t lr:{}'.format(epoch, sumloss / bat_cnt, cur_lr)
+    avg_loss = sumloss / bat_cnt
+    avg_distortion = sumdistortion / bat_cnt
+    avg_distribution_loss = sumdistributionloss / bat_cnt
+    avg_psnr = sumpsnr / bat_cnt
+    avg_interpsnr = suminterpsnr / bat_cnt
+    avg_warppsnr = sumwarppsnr / bat_cnt
+    avg_bpp = sumbpp / bat_cnt
+    avg_bpp_feature = sumbpp_feature / bat_cnt
+    avg_bpp_mv = sumbpp_mv / bat_cnt
+    avg_bpp_z = sumbpp_z / bat_cnt
+    loss_log.write("{},{},{},{},{},{},{},{},{},{}\n".format(avg_loss, avg_distortion, avg_distribution_loss, avg_psnr, avg_interpsnr, avg_warppsnr, avg_bpp, avg_bpp_feature, avg_bpp_mv, avg_bpp_z))
+    log = 'Train Epoch : {:02} Loss:\t {:.6f}\t Distortion:\t {:.6f}\t DistributionLoss:\t {:.6f}\t lr:{}'.format(epoch, avg_loss, avg_distortion, avg_distribution_loss, cur_lr)
     logger.info(log)
+    loss_log.close()
     return global_step
 
 
@@ -249,6 +251,9 @@ if __name__ == "__main__":
         filehandler.setLevel(logging.INFO)
         filehandler.setFormatter(formatter)
         logger.addHandler(filehandler)
+        loss_csv = args.log.replace('txt','csv')
+        with open(loss_csv, 'w') as loss_log:
+            loss_log.write('loss,distortion,distribution_loss,psnr,interpsnr,warppsnr,bpp,bpp_feature,bpp_mv,bpp_z\n')
     logger.setLevel(logging.INFO)
     logger.info("DVC training")
     logger.info("config : ")
@@ -280,5 +285,5 @@ if __name__ == "__main__":
         if global_step > tot_step:
             save_model(model, global_step, args.snapshot_dir)
             break
-        global_step = train(epoch, global_step)
+        global_step = train(epoch, global_step, loss_csv)
         save_model(model, global_step, args.snapshot_dir)

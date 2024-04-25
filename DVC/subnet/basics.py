@@ -115,7 +115,8 @@ def geti(lamb):
         return 'H265L29'
     else:
         print("cannot find lambda : %d"%(lamb))
-        exit(0)
+        return None
+
 
 
 def conv2d_same_padding(input, weight, bias=None, stride=1, padding=0, dilation=1, groups=1):
